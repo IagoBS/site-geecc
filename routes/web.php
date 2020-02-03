@@ -13,6 +13,9 @@
 Route::get('/', function () {
 return view('welcome');
 });
-Route::get('/login', 'LoginController@index');
-Route::post('/login', 'LoginController@store')->name('login.store');
+Route::get('/login', 'LoginController@index')->name('login.index');
+Route::post('/store', 'LoginController@store')->name('login.store');
 Route::get('logout', 'LoginController@logout')->name('logout');
+Route::get('/registro', 'RegisterController@index')->name('registro');
+Route::post('/registro', 'RegisterController@store')->name('registro.store');
+

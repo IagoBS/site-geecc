@@ -24,19 +24,21 @@ class StoreLoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|max:255|email',
-            'password' => 'required|min:6|max:30'
+            'name' => 'required',
+            'title' => 'required|min:1|max:50',
+            'content' => 'required|min:1',
+
         ];
     }
     public function messages()
     {
         return [
-            'email.email' => 'email inválido',
-            'email.required' => 'Obrigatório colocar email',
-            'email.email' => 'email não pode possuir mais que 255 caracteres',
-            'password.required' => 'Senha é obrigatória',
-            'password.min' => 'senha deve ter no mínimo 6 caracteres',
-            'password.max' => 'senha deve ter no máximo 30 caracteres'
+            'name.required' => 'Nome obrigatório',
+            'title.required' => 'Título da notícia é obrigatório',
+            'title.min' => 'Título deve teve ter pelo menos 1 caractere',
+            'content.max' => 'Título não pode ter mais que 50 caracteres',
+            'content.required' => 'Texto na notícia é obrigatório',
+            'content.min' => 'Texto da notícia deve ter pleo menos 1 caractere',
         ];
     }
 }

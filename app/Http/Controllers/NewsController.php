@@ -59,8 +59,7 @@ class NewsController extends Controller
 
     public function show($id)
     {
-        $news = News::find($id);
-        return view('getIndex', compact($news));
-        
+        $news = News::findOrFail($id);
+        return view('getIndex', ['news' => News::findOrFail($id) ]);
     }
 }

@@ -11,7 +11,7 @@
 |
 */
 Route::get('/','NewsController@index')->name('news.index');
-Route::get('/show/{$id}', 'NewsController@show')->name('news.getIndex/{$id}');
+Route::get('/news/{id}', 'NewsController@show')->name('news.show');
 Route::get('/news', 'NewsController@create')->name('news');
 Route::post('/news', 'NewsController@store')->name('news.store');
 Route::get('/login', 'LoginController@index')->name('login.index');

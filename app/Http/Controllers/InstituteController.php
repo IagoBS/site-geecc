@@ -51,7 +51,7 @@ class InstituteController extends Controller
             return redirect()->back()->withInput()->withErrors('Erro ao enviar formulário, tente novamento');
         }
         if($instituto->save()) {
-            return redirect()->route('institutos.store');
+            return redirect()->route('institutos.index');
         }
     }
 

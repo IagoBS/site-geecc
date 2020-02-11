@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Project;
 use Illuminate\Http\Request;
+use App\Helpers\uploads;
 
 class ProjectsController extends Controller
 {
@@ -13,7 +15,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        //
+        return view('projects');
     }
 
     /**
@@ -23,7 +25,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        //
+        return view('createProject');
     }
 
     /**
@@ -34,7 +36,18 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $project = new Project();
+        $project->name = $data['name'];
+        $project->about = $data['about'];
+        $project->descripition = $data['descripition'];
+        // acessar a função do helper
+         // $project->logo =  store_file($request, 'logo', 'logo-projeto');
+
+        if (!$project->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao criar projeto');
+        }
+        return redirect()->route('projetos.index');
     }
 
     /**

@@ -26,3 +26,4 @@ Route::get('/registro', 'RegisterController@index')->name('registro');
 Route::post('/registro', 'RegisterController@store')->name('registro.store');
 
 Route::resource('/institutos', 'InstituteController');
+Route::resource('/projetos', 'ProjectsController');

@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/','NewsController@index')->name('news.index');
+Route::get('/', 'NewsController@index')->name('news.index');
 Route::get('/news/{id}', 'NewsController@show')->name('news.show');
 Route::get('/news/{id}/edit', 'NewsController@edit')->name('news.edit');
 Route::put('/news/{id}', 'NewsController@update')->name('news.update');
@@ -25,3 +25,4 @@ Route::get('logout', 'LoginController@logout')->name('logout');
 Route::get('/registro', 'RegisterController@index')->name('registro');
 Route::post('/registro', 'RegisterController@store')->name('registro.store');
 
+Route::resource('/institutos', 'InstituteController');

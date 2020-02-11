@@ -5,7 +5,7 @@
     <div class="col-12 col-md-4 mb-3">
         @foreach ($news as $noticia)
         <div class="card mb-5">
-        <a href="{{}}" alt="Imagem" height="200px" width="200px"><img src="" alt=""></a>
+        <a href="{{url('/news/' . $noticia->id )}}"><img src="" alt=""></a>
             <div class="card-body">
             <h3 class="text-center">{{$noticia->title}}</h3>
             </div>

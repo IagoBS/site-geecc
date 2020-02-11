@@ -59,7 +59,46 @@ class NewsController extends Controller
 
     public function show($id)
     {
+
+        return view('getIndex', ['news' => News::findOrFail($id)]);
+    }
+    public function edit($id)
+    {
+        return view('update', [
+            'news' => News::findOrFail($id),
+            'categories' => Category::all(),
+            'authors' => User::all()
+        ]);
+    }
+    public function update(Request $request, $id)
+    {
+
+        $data = $request->all();
+        var_dump($data);
         $news = News::findOrFail($id);
-        return view('getIndex', ['news' => News::findOrFail($id) ]);
+        $news->title = $data['title'];
+        $news->user_id = $data['author'];
+        $news->category_id = $data['category'];
+        $news->content = $data['content'];
+
+        if (!$news->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
+        }
+        if ($news->save()) {
+            return redirect()->route('news.index');
+        }
+    }
+    public function delete()
+    {
+        return view('delete');
+    }
+    public function destroy($id)
+    {
+
+        $news =  News::findOrFail($id);
+        if (!$news->delete()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao deletar notícia, tente novamente');
+        }
+        return redirect()->route('news.index');
     }
 }

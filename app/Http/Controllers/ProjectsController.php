@@ -116,7 +116,7 @@ class ProjectsController extends Controller
     {
         $project = Project::findOrFail($id);
         if(!$project->delete()) {
-            return redirect()->back()->withInput()->withErrors();
+            return redirect()->back()->withInput()->withErrors('Erro ao editar projeto');
         }
         return redirect()->route('projetos.index');
     }

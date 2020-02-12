@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInstitute;
 use App\Institute;
+use App\Project;
 use Illuminate\Http\Request;
 
 class InstituteController extends Controller
@@ -15,7 +16,8 @@ class InstituteController extends Controller
      */
     public function index()
     {
-        return view('institutos');
+        $institutes = Institute::all();
+        return view('institutos', compact('institutes'));
     }
 
     /**
@@ -25,7 +27,8 @@ class InstituteController extends Controller
      */
     public function create()
     {
-        return view('createInstitutos');
+        $projects = Project::all();
+        return view('createInstitutos', compact('projects'));
     }
 
     /**
@@ -41,6 +44,7 @@ class InstituteController extends Controller
         $instituto->name = $data['name'];
         $instituto->email = $data['email'];
         $instituto->descripition = $data['descripition'];
+        $instituto->project_id = $data['project'];
         if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
             $name = uniqid(date('HisYmd'));
             $extesion = $request->logo->extension();
@@ -50,9 +54,9 @@ class InstituteController extends Controller
         if(!$instituto->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao enviar formulário, tente novamento');
         }
-        if($instituto->save()) {
+
             return redirect()->route('institutos.index');
-        }
+
     }
 
     /**
@@ -63,7 +67,7 @@ class InstituteController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('institutosDetails', ['institute' => Institute::findOrFail($id)]);
     }
 
     /**
@@ -74,7 +78,10 @@ class InstituteController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('updateInstitute', [
+            'institutes' => Institute::findOrFail($id),
+            'projects' => Project::all()
+        ]);
     }
 
     /**
@@ -86,7 +93,23 @@ class InstituteController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $institute = Institute::findOrFail($id);
+        $institute->name = $data['name'];
+        $institute->email = $data['email'];
+        $institute->project_id  = $data['project'];
+        $institute->descripition = $data['descripition'];
+        if($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extesion = $request->file('logo')->extension();
+            $nameFile = "{$name} . {$extesion}";
+            $institute->logo = $request->file('logo')->storeAs('logo', $nameFile);
+        }
+        if(!$institute->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao editar instituto');
+        }
+
+         return redirect()->route('institutos.index');
     }
 
     /**
@@ -97,6 +120,9 @@ class InstituteController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $institute = Institute::findOrFail($id);
+        if(!$institute->delete()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao deletar instituto');
+        }
     }
 }

@@ -12,8 +12,8 @@ class NewsSeeder extends Seeder
     public function run()
     {
     DB::table('news')->insert([
-        'user_id' => 3,
-        'category_id' => 5,
+        'user_id' => 1,
+        'category_id' => 1,
         'title' => 'titulo da chave',
         'content' => 'diawndiwnad'
     ]);

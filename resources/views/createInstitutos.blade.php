@@ -1,7 +1,7 @@
 @extends('layouts.template') @section('title', 'Criar instituto') @section('content')
 
 <div class="container">
-    <form action="{{route('institutos.store')}}" method="post" id="institute">
+    <form action="{{route('institutos.store')}}" method="post" id="institute" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
         <div class="alert alert-secondary">
@@ -15,6 +15,14 @@
             <div class="input-group-lg form-group">
                 <label for="name">Nome do instituto</label>
                 <input type="name" name="name" id="name" class="form-control" placeholder="Escreva o seu email">
+            </div>
+            <label for="project">Projeto</label>
+            <div class="input-group-lg">
+                <select name="project" id="project" class="custom-select">
+                    @foreach ($projects as $project)
+                <option value="{{$project->id}}">{{$project->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="input-group-lg form-group">
                 <label for="email">Email</label>

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Project;
 use Illuminate\Http\Request;
-use App\Helpers\uploads;
 
 class ProjectsController extends Controller
 {
@@ -15,7 +14,8 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        return view('projects');
+        $projects = Project::all();
+        return view('projects', compact('projects'));
     }
 
     /**
@@ -41,9 +41,13 @@ class ProjectsController extends Controller
         $project->name = $data['name'];
         $project->about = $data['about'];
         $project->descripition = $data['descripition'];
-        // acessar a função do helper
-         // $project->logo =  store_file($request, 'logo', 'logo-projeto');
 
+        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->file('logo')->extension();
+            $fileName = "{$name} . {$extension}";
+            $project->logo =  $request->file('logo')->storeAs('logo', $fileName);
+        }
         if (!$project->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar projeto');
         }
@@ -58,7 +62,9 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('projectDetails', [
+            'projects' => Project::findOrFail($id)
+        ]);
     }
 
     /**
@@ -69,7 +75,9 @@ class ProjectsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('projectEdit', [
+            'projects' => Project::findOrFail($id)
+        ]);
     }
 
     /**
@@ -81,7 +89,21 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $project = Project::findOrFail($id);
+        $project->name = $data['name'];
+        $project->about = $data['about'];
+        $project->descripition = $data['descripition'];
+        if($request->hasFile('logo') && $request->file('logo')->isValid()) {
+            $name = uniqid(date('HisYmd'));
+            $extension = $request->file('logo')->extension();
+            $fileName = "{$name} . {$extension}";
+            $project->logo = $request->file('logo')->storeAs('logo', $fileName);
+        }
+        if(!$project->save()) {
+            return redirect()->back()->withInput()->withErrors('erro ao editar projeto');
+        }
+        return redirect()->route('projetos.index');
     }
 
     /**
@@ -92,6 +114,10 @@ class ProjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $project = Project::findOrFail($id);
+        if(!$project->delete()) {
+            return redirect()->back()->withInput()->withErrors();
+        }
+        return redirect()->route('projetos.index');
     }
 }

@@ -19,6 +19,13 @@
             <input type="name" name="name" id="name" class="form-control" value="{{$projects->name}}">
             </div>
             <div class="input-group-lg form-group">
+                <select name="institute_id" id="institute_id" class="custom-select">
+                    @foreach ($institutes as $institute)
+                <option value="{{$institute->id}}">{{$institute->name}}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="input-group-lg form-group">
                 <label for="about">Sobre o projeto</label>
             <textarea name="about" id="about" cols="120" rows="10" >{{$projects->about}}</textarea>
             </div>

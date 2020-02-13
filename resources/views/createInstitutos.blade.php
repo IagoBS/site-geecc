@@ -16,14 +16,8 @@
                 <label for="name">Nome do instituto</label>
                 <input type="name" name="name" id="name" class="form-control" placeholder="Escreva o seu email">
             </div>
-            <label for="project">Projeto</label>
-            <div class="input-group-lg">
-                <select name="project" id="project" class="custom-select">
-                    @foreach ($projects as $project)
-                <option value="{{$project->id}}">{{$project->name}}</option>
-                    @endforeach
-                </select>
-            </div>
+        
+
             <div class="input-group-lg form-group">
                 <label for="email">Email</label>
                 <input type="email" name="email" id="email" class="form-control" placeholder="Escreva o seu email">

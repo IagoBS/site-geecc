@@ -16,8 +16,6 @@ class CreateInstitutesTable extends Migration
         Schema::create('institutes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
-            $table->bigInteger('project_id')->unsigned()->index();
-            $table->foreign('project_id')->references('id')->on('projects');
             $table->string('logo');
             $table->longText('descripition');
             $table->string('email')->uniqid();

@@ -17,7 +17,8 @@ class CreateProjectsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->longText('about');
-           
+            $table->bigInteger('institute_id')->unsigned()->index();
+            $table->foreign('institute_id')->references('id')->on('institutes');
             $table->string('logo');
             $table->longText('descripition');
             $table->timestamps();

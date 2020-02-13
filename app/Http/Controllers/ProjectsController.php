@@ -1,9 +1,10 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use App\Institute;
 use App\Project;
 use Illuminate\Http\Request;
+
 
 class ProjectsController extends Controller
 {
@@ -25,7 +26,8 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('createProject');
+        $institutes = Institute::with('project')->get();
+        return view('createProject', compact('institutes'));
     }
 
     /**
@@ -39,15 +41,12 @@ class ProjectsController extends Controller
         $data = $request->all();
         $project = new Project();
         $project->name = $data['name'];
+        $project->institute_id = $data['institute'];
         $project->about = $data['about'];
         $project->descripition = $data['descripition'];
 
-        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->file('logo')->extension();
-            $fileName = "{$name} . {$extension}";
-            $project->logo =  $request->file('logo')->storeAs('logo', $fileName);
-        }
+      
+        $project->logo =  store_file($request, 'logo', 'logo');
         if (!$project->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar projeto');
         }
@@ -62,8 +61,10 @@ class ProjectsController extends Controller
      */
     public function show($id)
     {
+
         return view('projectDetails', [
-            'projects' => Project::findOrFail($id)
+            'projects' => Project::findOrFail($id),
+            'institute' => Institute::all()
         ]);
     }
 
@@ -76,7 +77,8 @@ class ProjectsController extends Controller
     public function edit($id)
     {
         return view('projectEdit', [
-            'projects' => Project::findOrFail($id)
+            'projects' => Project::findOrFail($id),
+            'institutes' => Institute::with('project')->get()
         ]);
     }
 
@@ -93,25 +95,16 @@ class ProjectsController extends Controller
         $project = Project::findOrFail($id);
         $project->name = $data['name'];
         $project->about = $data['about'];
+        $project->institute_id = $data['institute_id'];
         $project->descripition = $data['descripition'];
-        if($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->file('logo')->extension();
-            $fileName = "{$name} . {$extension}";
-            $project->logo = $request->file('logo')->storeAs('logo', $fileName);
-        }
+        $project->logo = store_file($request, 'logo', 'logo');
         if(!$project->save()) {
             return redirect()->back()->withInput()->withErrors('erro ao editar projeto');
         }
         return redirect()->route('projetos.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy($id)
     {
         $project = Project::findOrFail($id);

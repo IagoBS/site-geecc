@@ -41,14 +41,7 @@ class NewsController extends Controller
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
 
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
-            $name = uniqid(date('HisYmd'));
-            $extension = $request->image->extension();
-            $nameFile = "{$name}.{$extension}";
-            $gallery->news_id = $news->id;
-            $gallery->photo = $request->file('image')->storeAs('gallery', $nameFile);
-        }
+        $gallery->photo = store_file($request, 'image', 'image');
 
         if ($gallery->save()) {
             return redirect()->route('news.index');
@@ -59,7 +52,6 @@ class NewsController extends Controller
 
     public function show($id)
     {
-
         return view('getIndex', ['news' => News::findOrFail($id)]);
     }
     public function edit($id)
@@ -72,7 +64,6 @@ class NewsController extends Controller
     }
     public function update(Request $request, $id)
     {
-
         $data = $request->all();
         var_dump($data);
         $news = News::findOrFail($id);

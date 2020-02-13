@@ -1,9 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-namespace upload;
 
-class Uploads {
+if(!function_exists('store_file')) {
     function store_file(Request $request, $fileName, $filePath) {
         if ($request->hasFile($fileName) && $request->file($fileName)->isValid()) {
             $name = uniqid(date('HisYmd'));

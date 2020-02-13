@@ -1,6 +1,7 @@
 @extends('layouts.template')
 @section('title', 'Criar projeto')
 @section('content')
+
 <div class="container">
     <form action="{{route('projetos.store')}}" method="post" id="project" enctype="multipart/form-data">
         @csrf
@@ -15,6 +16,14 @@
             <div class="input-group-lg form-group">
                 <label for="name">Nome do projeto</label>
                 <input type="name" name="name" id="name" class="form-control" placeholder="Escreva o seu email">
+            </div>
+            <div class="input-group-lg form-group">
+                <select name="institute" id="institute" class="custom-select">
+                    @foreach ($institutes as $institute)
+
+                    <option value="{{$institute->id}}">{{$institute->name}}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="input-group-lg form-group">
                 <label for="about">Sobre o projeto</label>

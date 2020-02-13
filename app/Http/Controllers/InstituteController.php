@@ -44,19 +44,13 @@ class InstituteController extends Controller
         $instituto->name = $data['name'];
         $instituto->email = $data['email'];
         $instituto->descripition = $data['descripition'];
-        $instituto->project_id = $data['project'];
-        if ($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extesion = $request->logo->extension();
-            $nameFile = "{$name} . {$extesion}";
-            $instituto->logo = $request->file('logo')->storeAs('logo', $nameFile);
-        }
-        if(!$instituto->save()) {
+        $instituto->logo = store_file($request, 'logo', 'logo');
+
+        if (!$instituto->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao enviar formulário, tente novamento');
         }
 
-            return redirect()->route('institutos.index');
-
+        return redirect()->route('institutos.index');
     }
 
     /**
@@ -97,19 +91,15 @@ class InstituteController extends Controller
         $institute = Institute::findOrFail($id);
         $institute->name = $data['name'];
         $institute->email = $data['email'];
-        $institute->project_id  = $data['project'];
+
         $institute->descripition = $data['descripition'];
-        if($request->hasFile('logo') && $request->file('logo')->isValid()) {
-            $name = uniqid(date('HisYmd'));
-            $extesion = $request->file('logo')->extension();
-            $nameFile = "{$name} . {$extesion}";
-            $institute->logo = $request->file('logo')->storeAs('logo', $nameFile);
-        }
-        if(!$institute->save()) {
+
+        $institute->logo = store_file($request, 'logo', 'logo');
+        if (!$institute->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao editar instituto');
         }
 
-         return redirect()->route('institutos.index');
+        return redirect()->route('institutos.index');
     }
 
     /**
@@ -121,8 +111,9 @@ class InstituteController extends Controller
     public function destroy($id)
     {
         $institute = Institute::findOrFail($id);
-        if(!$institute->delete()) {
+        if (!$institute->delete()) {
             return redirect()->back()->withInput()->withErrors('Erro ao deletar instituto');
         }
+        return redirect()->route('institutos.index');
     }
 }

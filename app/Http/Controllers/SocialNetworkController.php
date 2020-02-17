@@ -7,80 +7,61 @@ use Illuminate\Http\Request;
 
 class SocialNetworkController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function index()
     {
         $socialNetwork = SocialNetwork::all();
         return view('socialNetwork', compact('socialNetwork'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $socialNetwork = SocialNetwork::all();
+        return view('createSocialNetwork', compact('socialNetwork'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        $socialNetwork = new SocialNetwork();
+        $socialNetwork->name = $data['name'];
+        $socialNetwork->url = $data['url'];
+        $socialNetwork->incone = store_file($request, 'icone', 'logo');
+        if($socialNetwork->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao criar rede social');
+        }
+        return redirect()->route('rede-social.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
-    }
+        return view('socialNetworkEdit', [
+            'socialNetwork' => SocialNetwork::findOrFail($id)
+        ]);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $socialNetwork = SocialNetwork::findOrFail($id);
+        $socialNetwork->name = $data['name'];
+        $socialNetwork->url = $data['url'];
+        $socialNetwork->icone = store_file($request, 'icone', 'logo');
+        if(!$socialNetwork->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao alterar rede social');
+        }
+        return redirect()->route('rede-social.update');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $socialNetwork = SocialNetwork::findOrFail($id);
+
+        if(!$socialNetwork->delete()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao deletar rede social');
+        }
+        return redirect()->route('rede-social.destroy');
     }
 }

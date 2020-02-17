@@ -1,1 +1,1 @@
-<h1>Teste com email</h1>
+<h1>Teste {{$sendEmail->name}}</h1>

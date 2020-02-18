@@ -22,7 +22,7 @@
                 <input type="email" name="email" id="email" placeholder="Escreva seu email" class="form-control">
             </div>
             <div class="input-group-lg">
-                <input type="tel" name="telephone" id="telephone"  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="Escreva seu telefone()">
+                <input type="tel" name="telephone" id="telephone"   class="form-control" placeholder="Escreva seu telefone()">
             </div>
             <div class="input-group-lg">
                 <textarea name="message" id="message" cols="120" class="form-control" rows="10"></textarea>

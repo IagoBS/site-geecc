@@ -11,6 +11,7 @@
 |
 */
 
+use App\Contact;
 use App\Mail\SendMailContact;
 
 Route::get('/', 'NewsController@index')->name('news.index');
@@ -36,9 +37,8 @@ Route::resource('/institucional', 'QuemSomosController');
 
 Route::resource('/rede-social', 'SocialNetworkController');
 
-// Route::get('enviar-email', function() {
-// return new SendMailContact();
-// });
+
 // Route::get('contato', 'Contact');
 Route::get('/contato', 'ContactController@index')->name('contato.index');
 Route::post('/contato', 'ContactController@store')->name('contato.store');
+Route::get('/contato/listar', 'ContactController@list')->name('contato.list');

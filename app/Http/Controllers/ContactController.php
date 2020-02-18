@@ -6,6 +6,8 @@ use App\Contact;
 use App\Mail\sendEmailContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use PharIo\Manifest\Email;
+use PhpParser\Node\Expr\AssignOp\Concat;
 
 class ContactController extends Controller
 {
@@ -17,15 +19,34 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $email = new Contact();
-        $email->name = $data['name'];
-        $email->email = $data['email'];
-        $email->telephone = $data['telephone'];
-        $email->message = $data['message'];
-        if (!$email->save()) {
+        $sendEmail = new Contact();
+
+        $sendEmail->name = $data['name'];
+        $sendEmail->email = $data['email'];
+        $sendEmail->telephone = $data['telephone'];
+        $sendEmail->message = $data['message'];
+
+        if (!$sendEmail->save()) {
             redirect()->back()->withInput()->withErrors('Erro ao enviar email');
         }
-        // $sendEmail = new SendMailContact($email);
-        return Mail::send(new sendEmailContact($email));
+
+        Mail::send('email.contactMail', ['send' => $sendEmail], function ($m) use ($sendEmail) {
+            $m->from('web@geec.org.br', 'Geec');
+            $m->to($sendEmail->email, $sendEmail->name)->subject('Contato GEEC - Grupo de Educação, Ética e Cidadania');
+        });
+
+        return redirect()->route('contato.index');
     }
+    public function list() {
+
+        $contact = Contact::all();
+
+        return view('contactListEmail', compact('contact'));
+    }
+    public function show($id) {
+        return view('', [
+            'contact' => Contact::findOrFail($id)
+        ]);
+    }
+
 }

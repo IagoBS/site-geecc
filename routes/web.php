@@ -10,6 +10,10 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+use App\Contact;
+use App\Mail\SendMailContact;
+
 Route::get('/', 'NewsController@index')->name('news.index');
 Route::get('/news/{id}', 'NewsController@show')->name('news.show');
 Route::get('/news/{id}/edit', 'NewsController@edit')->name('news.edit');
@@ -32,3 +36,9 @@ Route::resource('/projetos', 'ProjectsController');
 Route::resource('/institucional', 'QuemSomosController');
 
 Route::resource('/rede-social', 'SocialNetworkController');
+
+
+// Route::get('contato', 'Contact');
+Route::get('/contato', 'ContactController@index')->name('contato.index');
+Route::post('/contato', 'ContactController@store')->name('contato.store');
+Route::get('/contato/listar', 'ContactController@list')->name('contato.list');

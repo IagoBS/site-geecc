@@ -1,5 +1,6 @@
 <?php
 
+use App\Contact;
 use Illuminate\Http\Request;
 
 if(!function_exists('store_file')) {
@@ -11,5 +12,12 @@ if(!function_exists('store_file')) {
             return $request->file($fileName)->storeAs($filePath, $filename);
         }
         return null;
+    }
+}
+
+if(!function_exists('send_email')) {
+    function send_email(Request $request) {
+        $data = $request->all();
+        $sendEmail = new Contact();
     }
 }

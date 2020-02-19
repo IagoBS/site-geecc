@@ -2,12 +2,13 @@
 
 namespace App\Mail;
 
+use App\Http\Controllers\Contact;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class SendMailContact extends Mailable
+class sendEmailContact extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -18,7 +19,7 @@ class SendMailContact extends Mailable
      */
     public function __construct()
     {
-        //
+
     }
 
     /**
@@ -28,6 +29,6 @@ class SendMailContact extends Mailable
      */
     public function build()
     {
-        return $this->view('email.contactMail');
+        return view('email.contactMail');
     }
 }

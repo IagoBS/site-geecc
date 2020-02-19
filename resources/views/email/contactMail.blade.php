@@ -1,1 +1,6 @@
-<h1>Teste com email</h1>
+
+<h1 style="text-align: center">{{ $send->name }}</h1>
+<br>
+<p>{{ $send->message }}</p>
+<br>
+<p>{{ $send->telephone}}</p>

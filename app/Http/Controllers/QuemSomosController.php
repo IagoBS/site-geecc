@@ -8,34 +8,20 @@ use Illuminate\Http\Request;
 
 class QuemSomosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
         $institucional = Institucional::all();
         return view('quemSomos', compact('institucional'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
+
         $institucional = Institucional::all();
         return view('quemSomosCreate', compact('institucional'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -50,39 +36,15 @@ class QuemSomosController extends Controller
         return redirect()->route('institucional.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        $institucional = Institucional::all();
-        return null;
-    }
+   
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-
         return view('quemSomosEdit', [
             'institucional' => Institucional::findOrFail($id)
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         $data = $request->all();
@@ -97,12 +59,6 @@ class QuemSomosController extends Controller
         return redirect()->route('institucional.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $institucional = Institucional::findOrFail($id);

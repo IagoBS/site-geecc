@@ -1,6 +1,6 @@
 @extends('layouts.template')
 @section('title', 'Ediar Quem somos')
-@section('cotent')
+@section('content')
 <div class="container">
     <div class="shadow-sm p-3 mb-5 bg-white rounded">
         <h1 class="text-center">Inserir quem somos</h1>

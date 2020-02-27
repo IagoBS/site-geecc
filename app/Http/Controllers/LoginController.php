@@ -17,25 +17,23 @@ class LoginController extends Controller
 
     public function store(Request $request)
     {
-        if (!filter_var($request->email, FILTER_VALIDATE_EMAIL)) {
-            return redirect()->back()->withInput()->withErrors('Erro ao especificar email, tente novamente');
-        }
-        if(!filter_var($request->password, FILTER_FLAG_STRIP_LOW)) {
-            return redirect()->back()->withInput()->withErrors('A senha específicada não está correta');
-        }
-        $credentials = $request->only([
-            'email' => $request->input('email'),
-            'password' => $request->input('password')
-        ]);
+        $credentials = $request->only('email', 'password');
+
         if (Auth::attempt($credentials)) {
-            return redirect()->route('welcome');
-        };
+            $user = auth()->user();
+            $request->session()->put('admin', $user->type);
+            return redirect()->route('dashboard');
+        }
         return redirect()->back()->withInput()->withErrors('O campo não foi encontrado, tente novamennte');
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        Auth::logout();
-        return redirect()->route('login');
+        if (Auth::logout()) {
+
+            return redirect()->route('login');
+        }
+        return redirect()->back()->withErrors('erro ao desconectar, tente novamente');
     }
+
 }

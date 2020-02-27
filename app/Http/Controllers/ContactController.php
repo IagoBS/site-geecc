@@ -39,9 +39,9 @@ class ContactController extends Controller
     }
     public function list() {
 
-        $contact = Contact::all();
-
-        return view('contactListEmail', compact('contact'));
+            $contact = Contact::all();
+            return view('contactListEmail', compact('contact'));
+     
     }
     public function show($id) {
         return view('', [

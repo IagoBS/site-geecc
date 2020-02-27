@@ -12,13 +12,18 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="{{asset('imagens/geec.png')}}" alt="Geec" class="img-fluid">
+        <img src="{{asset('imagens/geec.png')}}" alt="Geec" class="img-fluid">
+
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+            <div class="p-2 bd-highlight">
+
+            </div>
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                 </li>
@@ -36,7 +41,7 @@
                         Institutos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarInstitutos">
-                         <a class="dropdown-item" href="#"></a>
+                        <a class="dropdown-item" href="#"></a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -44,7 +49,7 @@
                         Fale Conosco
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarFaleConosco">
-                         <a class="dropdown-item" href="#"></a>
+                        <a class="dropdown-item" href="#"></a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -52,17 +57,27 @@
                         Articulistas
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarArticulistas">
-                         <a class="dropdown-item" href="#"></a>
+                        <a class="dropdown-item" href="#"></a>
                     </div>
                 </li>
+                @guest
+                  <span></span>
+                     @else
+                     <li class="nav-item">
+                         <a href="" class="nav-link">DashBoard</a>
+                     </li>
+                     <li class="nav-item">
+                     <a href="{{route('login.logout')}}" class="nav-link">Logout</a>
+                     </li>
+                @endguest
             </ul>
             <form class="form-inline my-2 my-lg-0">
-
                 <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
             </form>
         </div>
 
     </nav>
+            
     <div class="container">
         @yield('content')
     </div>

@@ -2,32 +2,33 @@
 
 namespace App\Http\Controllers;
 
+session_start();
+
+use App\Http\Requests\StoreRegister;
 use App\User;
+use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
-    public function index()
+    public function create()
     {
         return view('registro');
     }
-    public function store(Request $request)
+
+    public function store(StoreRegister $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|max:30',
-            'email' => 'required|min:10|max:150|email',
-            'password' => 'required|min:6|max:50'
-        ]);
         $data = $request->all();
-        $user = new User;
+        $user = new User();
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->password = bcrypt($data['password']);
-         if($user->save()) {
-             return redirect()->route('login.index');
-         } else {
-             return redirect()->back()->withInput()->withErrors('Erro ao cadastrar usuário.');
-         }
+
+        if (!$user->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao registrar usuário');
+        }
+        return redirect()->route('login.index');
     }
 }

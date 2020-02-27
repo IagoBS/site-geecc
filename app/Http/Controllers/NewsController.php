@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+
+
 use App\Category;
 use App\Gallery;
 use App\Http\Requests\StoreNews;
@@ -16,17 +18,22 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::with(['user', 'gallery', 'category'])->get();
+        var_dump(session()->get('teste'));
         return view('news', compact('news'));
     }
 
     public function create()
     {
-        $categories = Category::all();
-        $authors = User::all();
-        return view('createNews', compact('authors', 'categories'));
+        if (session()->get('admin') === 'admin') {
+            $categories = Category::all();
+            $authors = User::all();
+            return view('createNews', compact('authors', 'categories'));
+        } else {
+            abort(403);
+        }
     }
 
-    public function store(StoreNews $request)
+    public function store(Request $request)
     {
 
         $data = $request->all();
@@ -43,17 +50,17 @@ class NewsController extends Controller
 
         $gallery->photo = store_file($request, 'image', 'image');
 
-        if ($gallery->save()) {
-            return redirect()->route('news.index');
-        } else {
+        if (!$gallery->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao enviar imagem');
         }
+        return redirect()->route('news.index');
     }
 
     public function show($id)
     {
         return view('getIndex', ['news' => News::findOrFail($id)]);
     }
+
     public function edit($id)
     {
         return view('update', [
@@ -62,10 +69,11 @@ class NewsController extends Controller
             'authors' => User::all()
         ]);
     }
+
     public function update(Request $request, $id)
     {
         $data = $request->all();
-        var_dump($data);
+
         $news = News::findOrFail($id);
         $news->title = $data['title'];
         $news->user_id = $data['author'];
@@ -75,17 +83,14 @@ class NewsController extends Controller
         if (!$news->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
-        if ($news->save()) {
-            return redirect()->route('news.index');
-        }
+        return redirect()->route('news.index');
+
     }
-    public function delete()
-    {
-        return view('delete');
-    }
+
+    
+
     public function destroy($id)
     {
-
         $news =  News::findOrFail($id);
         if (!$news->delete()) {
             return redirect()->back()->withInput()->withErrors('Erro ao deletar notícia, tente novamente');

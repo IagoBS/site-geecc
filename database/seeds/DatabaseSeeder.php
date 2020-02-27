@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -11,7 +12,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(NewsSeeder::class);
+        $this->call(Category::class);
 
     }
 }

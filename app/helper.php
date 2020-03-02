@@ -21,3 +21,8 @@ if(!function_exists('send_email')) {
         $sendEmail = new Contact();
     }
 }
+if(!function_exists('token')) {
+    function token($arr) {
+        mt_rand(15, 50);
+    }
+}

@@ -29,7 +29,8 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::get('/news', 'NewsController@create')->name('news');
     Route::post('/news', 'NewsController@store')->name('news.store');
 });
-// });
+
+
 Route::get('logout', 'LoginController@logout')->middleware('auth')->name('login.logout');
 Route::get('/', 'NewsController@index')->name('news.index');
 Route::get('/news/{id}', 'NewsController@show')->name('news.show');
@@ -61,3 +62,13 @@ Route::get('/erro403', function () {
 Route::get('/erro404', function() {
     return view('erros.erro404');
 });
+Route::get('/perfil', 'ProfileController@create')->name('perfil');
+Route::post('/perfil', 'ProfileController@store')->name('perfil.store');
+Route::get('/perfil/{id}', 'ProfileController@show')->name('perfil.show');
+Route::delete('/perfil/destruir', 'ProfileController@destroy')->name('perfil.destroy');
+
+Route::get('/perfil/{id}/edit', 'ProfileController@edit')->name('perfil.edit');
+Route::put('/perfil/{id}', 'ProfileController@update')->name('perfil.update');
+
+Route::get('/recuperar/senha', 'ForgetPasswordController@index')->name('forget.password');
+Route::post('/recuperar/senha/{token}', 'ForgetPasswordController@sendEmail')->name('forget.password');

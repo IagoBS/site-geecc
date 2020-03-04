@@ -50,7 +50,7 @@ class InstituteController extends Controller
             'projects' => Project::all()
         ]);
     }
-
+   
 
     public function update(Request $request, $id)
     {
@@ -69,7 +69,7 @@ class InstituteController extends Controller
         return redirect()->route('institutos.index');
     }
 
-    
+
     public function destroy($id)
     {
         $institute = Institute::findOrFail($id);

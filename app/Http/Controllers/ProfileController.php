@@ -44,7 +44,7 @@ class ProfileController extends Controller
     {
         $data = $request->all();
         $profile = Profile::findOrFail($id);
-       
+
         $profile->about = $data['about'];
         $profile->facebook = $data['facebook'];
         $profile->twiiter = $data['twiiter'];

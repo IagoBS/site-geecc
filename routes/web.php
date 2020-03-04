@@ -22,14 +22,13 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::get('/registro', 'RegisterController@create')->name('registro');
     Route::post('/registro', 'RegisterController@store')->name('registro.store');
     Route::get('/contato/listar', 'ContactController@list')->name('contato.list');
-    Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
     Route::get('/news/{id}/edit', 'NewsController@edit')->name('news.edit');
     Route::put('/news/{id}', 'NewsController@update')->name('news.update');
     Route::delete('/news/{id}', 'NewsController@destroy')->name('news.destroy');
     Route::get('/news', 'NewsController@create')->name('news');
     Route::post('/news', 'NewsController@store')->name('news.store');
 });
-
+Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
 
 Route::get('logout', 'LoginController@logout')->middleware('auth')->name('login.logout');
 Route::get('/', 'NewsController@index')->name('news.index');
@@ -56,9 +55,7 @@ Route::resource('/rede-social', 'SocialNetworkController')->middleware(['user.ad
 
 Route::get('/contato', 'ContactController@index')->name('contato.index');
 Route::post('/contato', 'ContactController@store')->name('contato.store');
-Route::get('/erro403', function () {
-    return view('erros.errorPermission');
-})->name('erro403');
+
 Route::get('/erro404', function() {
     return view('erros.erro404');
 });
@@ -70,5 +67,8 @@ Route::delete('/perfil/destruir', 'ProfileController@destroy')->name('perfil.des
 Route::get('/perfil/{id}/edit', 'ProfileController@edit')->name('perfil.edit');
 Route::put('/perfil/{id}', 'ProfileController@update')->name('perfil.update');
 
-Route::get('/recuperar/senha', 'ForgetPasswordController@index')->name('forget.password');
-Route::post('/recuperar/senha/{token}', 'ForgetPasswordController@sendEmail')->name('forget.password');
+Route::get('/recuperar', 'ForgetPasswordController@index')->name('forget');
+Route::post('/recuperar', 'ForgetPasswordController@store')->name('forget.store');
+Route::get('/recuperar-senha', 'ForgetPasswordController@edit')->name('forget.edit');
+Route::put('/recuperar-senha' , 'ForgetPasswordController@update' )->name('forget.update');
+

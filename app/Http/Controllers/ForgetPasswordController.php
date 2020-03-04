@@ -3,56 +3,44 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\ResetsPasswords;
-use Illuminate\Contracts\Auth\Guard;
-use Illuminate\Auth\Passwords\PasswordBroker;
-use Illuminate\Auth\Notifications\ResetPassword;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 class ForgetPasswordController extends Controller
 {
-    public function __construct(Guard $auth, PasswordBroker $passwords)
-    {
-        $this->auth = $auth;
-        $this->passwords = $passwords;
-        $this->middleware('guest');
-    }
     public function index()
     {
         return view('forgetPassword');
     }
+
     public function store(Request $request)
     {
-        $data = $request->all();
+        $user = User::where('email', $request->email)->first();
 
-        $forget = DB::table('password_resets')
-            ->join('users', $data['email'], '=', 'users.email')
-            ->first()
-            ->get();
-        $forget->email = $data['email'];
-        $forget->token =  mt_rand(1, 1000);
-        if (!$forget->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao trocar senha');
-        }
+        $user->token = md5(uniqid(rand(), true));
+        $user->token_created_at = date("Y-m-d H:i:s", strtotime('+1 day'));
+        $user->save();
+        $link =  "http://127.0.0.1:8000" . '/recuperar-senha?token=' . $user->token ;
 
-        if ($this->sendResetEmail($data['email'], $forget->token)) {
-            return redirect()->back()->with('status', trans('Foi enviado um link no seu email'));
-        } else {
-            return redirect()->back()->withErrors(['error' => trans('Um erro ocorreu, tente novamente ou mais tarde')]);
-        }
-
-        return redirect()->route('forget.password');
+        forget_password($user, $link);
+        return redirect()->back()->with('status', trans("Foi enviado um e-mail com a redefinição de senha"));
+        // return var_dump($link);
     }
 
-    public function sendResetEmail($email, $token) {
-        $user = DB::table('users')->where('email', $email)->select('email')->first();
-        $link = config('base_url') . 'password/reset/' . $token . '?email=' . urlencode($user->email);
+    public function edit(Request $request)
+    {
+        $token = $request->query('token');
+        return view('forgetPasswordEdit', [
+            'token' => $token
+        ]);
+    }
 
-        Mail::send('email.contactMail', ['send' => $sendEmail], function ($m) use ($sendEmail) {
-            $m->from('web@geec.org.br', 'Geec');
-            $m->to($sendEmail->email, $sendEmail->name)->subject('Contato GEEC - Grupo de Educação, Ética e Cidadania');
-        });
+    public function update(Request $request)
+    {
+        $data = $request->all();
+        $user = User::where('token', $data['token'])->first();
+        $user->password = bcrypt($data['password']);
+        $user->save();
+        return redirect()->route('news.index');
     }
 }

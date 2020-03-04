@@ -1,6 +1,7 @@
 <?php
 
 use App\Contact;
+use App\Mail\ForgetPassword;
 use Illuminate\Http\Request;
 
 if(!function_exists('store_file')) {
@@ -16,8 +17,20 @@ if(!function_exists('store_file')) {
 }
 
 if(!function_exists('send_email')) {
-    function send_email(Request $request) {
-        $data = $request->all();
-        $sendEmail = new Contact();
+    function send_email($user, $link) {
+        Mail::send('email.resetPassword', ['user' => $user, 'link' => $link], function ($m) use($user) {
+            $m->from('web@geec.org.br', 'Solitação para recuperar senha');
+
+            $m->to($user->email, $user->name)
+            ->subject('GEEC - solitação para recuperação de senha');
+        });
     }
 }
+if(!function_exists('forget_password')) {
+    function forget_password($user, $link) {
+        // return new ForgetPassword($user);
+        Mail::send(new ForgetPassword($user, $link));
+
+    }
+}
+

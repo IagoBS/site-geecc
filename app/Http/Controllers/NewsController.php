@@ -24,13 +24,9 @@ class NewsController extends Controller
 
     public function create()
     {
-        if (session()->get('admin') === 'admin') {
-            $categories = Category::all();
-            $authors = User::all();
-            return view('createNews', compact('authors', 'categories'));
-        } else {
-            abort(403);
-        }
+        $categories = Category::all();
+        $authors = User::all();
+        return view('createNews', compact('authors', 'categories'));
     }
 
     public function store(Request $request)
@@ -84,10 +80,9 @@ class NewsController extends Controller
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
         return redirect()->route('news.index');
-
     }
 
-    
+
 
     public function destroy($id)
     {

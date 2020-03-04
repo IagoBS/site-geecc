@@ -59,10 +59,6 @@ Route::post('/contato', 'ContactController@store')->name('contato.store');
 Route::get('/erro404', function() {
     return view('erros.erro404');
 });
-Route::get('/perfil', 'ProfileController@create')->name('perfil');
-Route::post('/perfil', 'ProfileController@store')->name('perfil.store');
-Route::get('/perfil/{id}', 'ProfileController@show')->name('perfil.show');
-Route::delete('/perfil/destruir', 'ProfileController@destroy')->name('perfil.destroy');
 
 Route::get('/perfil/{id}/edit', 'ProfileController@edit')->name('perfil.edit');
 Route::put('/perfil/{id}', 'ProfileController@update')->name('perfil.update');

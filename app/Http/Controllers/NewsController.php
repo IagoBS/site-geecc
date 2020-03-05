@@ -33,28 +33,28 @@ class NewsController extends Controller
     {
 
         $data = $request->all();
+
         $news = new News();
         $gallery = new Gallery();
         $news->user_id = $data['author'];
         $news->category_id = $data['category'];
         $news->title = $data['title'];
         $news->content = $data['content'];
-
+        $news->slug = $data['title'];
         if (!$news->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
 
-        $gallery->photo = store_file($request, 'image', 'image');
+        $gallery->news_id = $news->id;
 
-        if (!$gallery->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao enviar imagem');
-        }
+        $gallery->photo = store_file($request, "image", 'gallery');
+        $gallery->save();
         return redirect()->route('news.index');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        return view('getIndex', ['news' => News::findOrFail($id)]);
+        return view('getIndex', ['news' => News::findOrFail($slug)] );
     }
 
     public function edit($id)

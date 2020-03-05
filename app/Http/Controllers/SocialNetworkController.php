@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class SocialNetworkController extends Controller
 {
- 
+
     public function index()
     {
         $socialNetwork = SocialNetwork::all();
@@ -64,4 +64,5 @@ class SocialNetworkController extends Controller
         }
         return redirect()->route('rede-social.destroy');
     }
+    
 }

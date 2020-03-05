@@ -18,28 +18,32 @@ use App\Mail\SendMailContact;
 // Route::middleware(['user.admin'])->group(function () {
 
 Route::group(['middleware' => ['auth', 'user.admin']], function () {
-    Route::get('/registro', 'RegisterController@create')->name('registro');
-    Route::get('/registro', 'RegisterController@create')->name('registro');
-    Route::post('/registro', 'RegisterController@store')->name('registro.store');
+
+    Route::get('/usuario', 'UserController@create')->name('usuario');
+    Route::post('/usuario', 'UserController@store')->name('usuario.store');
+    Route::get('/usuario/{slug}', 'UserController@show')->name('usuario.show');
+    Route::put('/usuario/{id}', 'UserController@update')->name('usuario.update');
+    Route::delete('/usuario/{id}', 'UserController@destroy')->name('usuario.destroy');
     Route::get('/contato/listar', 'ContactController@list')->name('contato.list');
     Route::get('/news/{id}/edit', 'NewsController@edit')->name('news.edit');
     Route::put('/news/{id}', 'NewsController@update')->name('news.update');
     Route::delete('/news/{id}', 'NewsController@destroy')->name('news.destroy');
     Route::get('/news', 'NewsController@create')->name('news');
     Route::post('/news', 'NewsController@store')->name('news.store');
+
 });
 Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
 
 Route::get('logout', 'LoginController@logout')->middleware('auth')->name('login.logout');
 Route::get('/', 'NewsController@index')->name('news.index');
-Route::get('/news/{id}', 'NewsController@show')->name('news.show');
+Route::get('/news/{slug}', 'NewsController@show')->name('news.show');
 
 Route::get('/login', 'LoginController@index')->name('login');
 Route::post('/store', 'LoginController@store')->name('login.store');
 
-Route::resource('/institutos', 'InstituteController')->middleware(['user.admin', 'auth'])->except([
-    'index', 'show'
-]);
+Route::resource('/institutos', 'InstituteController', [
+
+])->middleware(['auth', 'user.admin']);
 
 Route::resource('/projetos', 'ProjectsController')->middleware(['user.admin', 'auth'])->except([
     'index', 'show'
@@ -56,12 +60,7 @@ Route::resource('/rede-social', 'SocialNetworkController')->middleware(['user.ad
 Route::get('/contato', 'ContactController@index')->name('contato.index');
 Route::post('/contato', 'ContactController@store')->name('contato.store');
 
-Route::get('/erro404', function() {
-    return view('erros.erro404');
-});
 
-Route::get('/perfil/{id}/edit', 'ProfileController@edit')->name('perfil.edit');
-Route::put('/perfil/{id}', 'ProfileController@update')->name('perfil.update');
 
 Route::get('/recuperar', 'ForgetPasswordController@index')->name('forget');
 Route::post('/recuperar', 'ForgetPasswordController@store')->name('forget.store');

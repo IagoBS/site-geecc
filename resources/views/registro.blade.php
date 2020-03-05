@@ -11,7 +11,7 @@
                 </div>
                 <h3 class="text-center ">Criar conta</h3>
 
-                <form action="{{route('registro.store')}}" id="form" method="POST" class="form-group">
+                <form action="{{route('usuario.store')}}" id="form" method="POST" class="form-group">
                     @csrf
                     @if ($errors->any())
                     <div class="alert alert-secondary">
@@ -33,12 +33,19 @@
                         <input type="email" name="email" id="email" class="form-control" placeholder="Escreva o seu email">
                     </div>
                     <div class="input-group-lg form-group">
+                        <label for="about">Sobre você</label>
+                        <textarea name="about" id="about" cols="120" rows="10" placeholder="Escreva um pouco de quem você é"></textarea>
+                    </div>
+                    <div class="input-group-lg form-group">
                         <label for="password">Senha</label>
                         <input type="password" name="password" id="password" class="form-control" placeholder="Escreva o sua senha">
                     </div>
-
+                    <div class="input-group-lg form-group">
+                        <label for="photo">Foto de perfil</label>
+                        <input type="file" name="photo" id="photo">
+                    </div>
                 </form>
-                
+
                 <button type="submit" form="form" class="btn btn-primary" class="group">Cadastrar</button>
 
 

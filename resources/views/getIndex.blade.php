@@ -4,7 +4,7 @@
 <div class="content">
 
     <div class="d-flex justify-content-center">
-        <h1>{{$news->title}}</h1>
+      
     </div>
     <div class="row">
         <img src="" alt="" class="img-fluid">

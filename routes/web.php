@@ -19,17 +19,22 @@ use App\Mail\SendMailContact;
 
 Route::group(['middleware' => ['auth', 'user.admin']], function () {
 
-    Route::get('/usuario', 'UserController@create')->name('usuario');
-    Route::post('/usuario', 'UserController@store')->name('usuario.store');
-    Route::get('/usuario/{slug}', 'UserController@show')->name('usuario.show');
+
+    Route::get('/usuario/{id}', 'UserController@show')->name('usuario.show');
+    Route::get('/registro', 'UserController@create')->name('usuario.create');
+    Route::post('/registro', 'UserController@store')->name('usuario.store');
+    Route::get('/usuario/{id}/edit', 'UserController@edit')->name('usuario.edit');
     Route::put('/usuario/{id}', 'UserController@update')->name('usuario.update');
     Route::delete('/usuario/{id}', 'UserController@destroy')->name('usuario.destroy');
+
     Route::get('/contato/listar', 'ContactController@list')->name('contato.list');
+
     Route::get('/news/{id}/edit', 'NewsController@edit')->name('news.edit');
     Route::put('/news/{id}', 'NewsController@update')->name('news.update');
     Route::delete('/news/{id}', 'NewsController@destroy')->name('news.destroy');
     Route::get('/news', 'NewsController@create')->name('news');
     Route::post('/news', 'NewsController@store')->name('news.store');
+    Route::get('/news/lista', 'ListController@news')->name('list.news');
 
 });
 Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
@@ -45,13 +50,9 @@ Route::resource('/institutos', 'InstituteController', [
 
 ])->middleware(['auth', 'user.admin']);
 
-Route::resource('/projetos', 'ProjectsController')->middleware(['user.admin', 'auth'])->except([
-    'index', 'show'
-]);
+Route::resource('/projetos', 'ProjectsController');
 
-Route::resource('/institucional', 'QuemSomosController')->middleware(['user.admin', 'auth'])->except([
-    'index', 'show'
-]);
+Route::resource('/institucional', 'QuemSomosController');
 
 Route::resource('/rede-social', 'SocialNetworkController')->middleware(['user.admin', 'auth'])->except([
     'index', 'show'

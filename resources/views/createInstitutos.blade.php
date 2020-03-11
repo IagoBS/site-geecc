@@ -1,40 +1,47 @@
-@extends('layouts.template') @section('title', 'Criar instituto') @section('content')
+@extends('layouts.dashboard')
+ @section('title', 'Criar instituto')
+ @section('dashboard')
 
 <div class="container">
-    <form action="{{route('institutos.store')}}" method="post" id="institute" enctype="multipart/form-data">
-        @csrf
-        @if ($errors->any())
+    <form action="{{route('institutos.store')}}" method="post" id="form" enctype="multipart/form-data">
+        @csrf @if ($errors->any())
         <div class="alert alert-secondary">
             @foreach ($errors->all() as $error )
             <ul>
                 <li>{{$error}}</li>
             </ul>
             @endforeach
-            @endif
+        </div>
+        @endif
 
-            <div class="input-group-lg form-group">
+        <div class="row margin">
+            <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">account_circle</i>
                 <label for="name">Nome do instituto</label>
-                <input type="name" name="name" id="name" class="form-control" placeholder="Escreva o seu email">
+                <input type="text" name="name" id="name">
             </div>
-        
+        </div>
+        <div class="row margin">
+            <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">email</i>
+                <label for="email">Email do instituto</label>
+                <input type="email" name="email" id="email">
+            </div>
+        </div>
 
-            <div class="input-group-lg form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" class="form-control" placeholder="Escreva o seu email">
+        <div class="row margin">
+            <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">wrap_text</i>
+                <textarea name="descripition" id="descripition" cols="120" class="materialize-textarea" rows="100" id="textarea1"></textarea>
             </div>
-            <div class="input-group-lg form-group">
-                <textarea name="descripition" id="descripition" cols="120" rows="10"></textarea>
-            </div>
-            <div class="row">
-                <div class="input-group-lg form-group">
-                    <label for="logo">Escolha a logo do instituto</label>
-                    <input type="file" name="logo" id="logo" placeholder="Logo do instituto">
-                </div>
-            </div>
+        </div>
+        <div class="row margin">
+            <input type="file" name="logo" id="logo">
+        </div>
     </form>
-    <div class="d-flex justify-content-end">
-        <button type="submit" class="btn btn-primary" form="institute">Cadastrar</button>
-    </div>
+    <br>
+    <button type="submit" class="btn blue" form="form">Criar Instituto</button>
+
 </div>
 
 @endsection

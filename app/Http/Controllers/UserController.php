@@ -27,7 +27,7 @@ class UserController extends Controller
         $user->email = $data['email'];
         $user->about = $data['about'];
         $user->password = bcrypt($data['password']);
-        
+
         $user->photo = store_file($request, 'photo', 'image');
 
         if (!$user->save()) {
@@ -35,25 +35,34 @@ class UserController extends Controller
         }
         return redirect()->route('login');
     }
-    public function show($slug)
+    public function show($id)
     {
-        return view('userDetails', ['user' => User::where('slug', '=', $slug)]);
+        return view(
+            'userDetails',
+            [
+                'user' => User::findOrFail($id),
+                'news' => News::with(['user', 'gallery', 'category'])->get()
+            ]
+        );
     }
     public function edit($id)
     {
-        return view("userEdit", ['user' => User::findOrFail($id)]);
+        return view("userEdit", ['users' => User::findOrFail(auth()->user()->id)]);
     }
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
+
+        $user = Auth::user($id);
         $data = $request->all();
+      
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->about = $data['about'];
+        $user->type = $data['type'];
         if (!$user->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao editar usuário');
         }
-        return redirect()->route('news.index');
+        return redirect()->route('dashboard');
     }
     public function destroy($id)
     {

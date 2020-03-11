@@ -1,55 +1,59 @@
-@extends('layouts.template') @section('title', 'Criar notícia') @section('content')
+@extends('layouts.dashboard')
+ @section('title', 'Criar notícia')
+ @section('dashboard')
 <div class="container">
+    <h3 class="center ">Criar conta</h3>
+    <form action="{{route('news.store')}}" id="form" method="POST" enctype="multipart/form-data">
 
+        @csrf
 
-    <div class="flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-group card-header text-center">
-            </div>
-            <h3 class="text-center ">Criar conta</h3>
-
-            <form action="{{route('news.store')}}" id="form" method="POST" class="form-group" enctype="multipart/form-data">
-                @csrf
-                @if ($errors->any())
-                <div class="alert alert-secondary">
-                    @foreach ($errors->all() as $error )
-                    <ul>
-                        <li>{{$error}}</li>
-                    </ul>
-                    @endforeach
-                    @endif
-                </div>
-                <label for="title" class="text-center">Título da notícia</label>
-                <div class="input-group-lg mb-3">
-                    <input type="text" name="title" id="name" class="form-control i" placeholder="Escreva da notícia">
-                </div>
-                <label for="author">Autor Teste</label>
-                <div class="input-group-lg mb-3">
-                    <select name="author" id="author" class="custom-select">
-                        @foreach ($authors as $author)
-                        <option value="{{$author->id}}">{{$author->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <label for="title" class="text-center">Categoria</label>
-                <div class="input-group-lg mb-3">
-                    <select name="category" id="category" class="custom-select">
-                        @foreach ($categories as $category)
-                        <option value="{{$category->id}}">{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                </div>
-                <label for="content">content</label>
-                <div class="input-group-lg form-group">
-                    <textarea name="content" id="content" cols="120" rows="10"></textarea>
-                </div>
-                <div class="input-group-lg form-group">
-                    <input type="file" name="image" id="image">
-                </div>
-            </form>
-            <button type="submit" form="form" class="btn btn-primary">Cadastrar</button>
+        @if ($errors->any())
+        <div class="red">
+            @foreach ($errors->all() as $error )
+            <ul>
+                <li>{{$error}}</li>
+            </ul>
+            @endforeach
         </div>
+        @endif
 
-    </div>
+        <div class="row margin">
+            <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">create</i>
+                <input type="text" name="title" id="title">
+                <label for="title">Título da notícia</label>
+            </div>
+        </div>
+        <div class="row margin">
+            <i class="material-icons prefix pt-2">create</i>
+            <select name="category">
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{$category->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="row margin">
+            <div class="input-field col s12">
+                <i class="material-icons prefix pt-2">wrap_text</i>
+                <textarea name="content" id="cotent" cols="120" class="materialize-textarea" rows="100"
+                    id="textarea1"></textarea>
+            </div>
+        </div>
+        <div class="row margin">
+            <div class="input-field col s12">
+                <input type="file" name="image" id="image">
+
+            </div>
+        </div>
+    </form>
+    <button type="submit" form="form" class="btn btn-primary">Criar notícia</button>
+
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+    });
+
+</script>
 @endsection

@@ -17,8 +17,8 @@
 
                     <label for="name" class="text-center">Nome</label>
                     <select name="category" id="category">
-                        @foreach ($categories as category)
-                        <option value=""></option>
+                        @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->name}}</option>
                         @endforeach
                     </select>
                 </div>

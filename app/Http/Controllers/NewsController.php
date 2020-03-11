@@ -18,15 +18,15 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::with(['user', 'gallery', 'category'])->get();
-        var_dump(session()->get('teste'));
-        return view('news', compact('news'));
+
+        return view('home', compact('news'));
     }
 
     public function create()
     {
         $categories = Category::all();
-        $authors = User::all();
-        return view('createNews', compact('authors', 'categories'));
+
+        return view('createNews', compact('categories'));
     }
 
     public function store(Request $request)
@@ -36,25 +36,26 @@ class NewsController extends Controller
 
         $news = new News();
         $gallery = new Gallery();
-        $news->user_id = $data['author'];
+        $news->user_id = auth()->user()->id;
         $news->category_id = $data['category'];
         $news->title = $data['title'];
         $news->content = $data['content'];
         $news->slug = $data['title'];
+
         if (!$news->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
 
         $gallery->news_id = $news->id;
-
         $gallery->photo = store_file($request, "image", 'gallery');
         $gallery->save();
+
         return redirect()->route('news.index');
     }
 
     public function show($slug)
     {
-        return view('getIndex', ['news' => News::findOrFail($slug)] );
+        return view('getIndex', ['news' => News::findOrFail($slug)]);
     }
 
     public function edit($id)
@@ -87,9 +88,8 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $news =  News::findOrFail($id);
-        if (!$news->delete()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao deletar notícia, tente novamente');
-        }
-        return redirect()->route('news.index');
+        $news->delete();
+        return redirect()->route('news.lista');
     }
+    
 }

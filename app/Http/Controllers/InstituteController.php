@@ -18,13 +18,14 @@ class InstituteController extends Controller
 
     public function create()
     {
-        $projects = Project::all();
+
         return view('createInstitutos', compact('projects'));
     }
 
-    public function store(StoreInstitute $request)
+    public function store(Request $request)
     {
         $data = $request->all();
+        var_dump($data);
         $instituto = new Institute();
         $instituto->name = $data['name'];
         $instituto->email = $data['email'];
@@ -40,7 +41,7 @@ class InstituteController extends Controller
 
     public function show($id)
     {
-        return view('institutosDetails', ['institute' => Institute::findOrFail($id)]);
+        return view('institutosDetails', ['institute' => Institute::findOrFail($id), 'projects' => Project::where('institute_id', $id)]);
     }
 
     public function edit($id)
@@ -50,7 +51,7 @@ class InstituteController extends Controller
             'projects' => Project::all()
         ]);
     }
-   
+
 
     public function update(Request $request, $id)
     {
@@ -78,4 +79,5 @@ class InstituteController extends Controller
         }
         return redirect()->route('institutos.index');
     }
+    
 }

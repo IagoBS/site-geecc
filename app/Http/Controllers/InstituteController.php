@@ -18,7 +18,7 @@ class InstituteController extends Controller
 
     public function create()
     {
-
+        $projects = Institute::all();
         return view('createInstitutos', compact('projects'));
     }
 
@@ -79,5 +79,5 @@ class InstituteController extends Controller
         }
         return redirect()->route('institutos.index');
     }
-    
+
 }

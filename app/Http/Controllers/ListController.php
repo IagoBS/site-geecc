@@ -16,7 +16,7 @@ class ListController extends Controller
         return view('newsLista', compact('news'));
     }
     public function institute() {
-        $institutes = Institute::with('project');
+        $institutes = Institute::all();
         return view('institutosList', compact('institutes'));
     }
 }

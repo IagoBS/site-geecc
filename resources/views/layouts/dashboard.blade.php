@@ -466,7 +466,7 @@
                         </li>
 
                         <li class="">
-                        <a href="{{route('institutos.lista')}}" class="">
+                        <a href="{{route('list.institute')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Pricing">Lista Institutos</span>
                             </a>

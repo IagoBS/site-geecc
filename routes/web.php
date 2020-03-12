@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::post('/news', 'NewsController@store')->name('news.store');
     Route::get('/news/lista', 'ListController@news')->name('list.news');
     Route::get('institutos/lista', 'ListController@institute')->name('list.institute');
+    Route::get('projetos/lista', 'ListController@projets')->name('list.project');
 });
 Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
 

@@ -15,18 +15,13 @@
             <div class="col s12 m6 l6">
                 <div class="card">
                     <div class="card-image">
-                    <img src="{{$institute->logo}}" alt="{{$institute->name}}"> <span class="card-title">{{$institute->name}}</span>
-                        </div>
-                        <div class="card-content">
-                            <p>
-                            {{ $institute->descripition }}
-                            </p>
-                        </div>
-
+                        <img src="{{url('/storage/' .$institute->logo)}}" alt="{{$institute->name}}"> <span
+                            class="card-title center">{{$institute->name}}</span>
                     </div>
                 </div>
             </div>
             @endforeach
+        </div>
     </div>
 </div>
 @endsection

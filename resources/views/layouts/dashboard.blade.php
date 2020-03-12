@@ -342,7 +342,7 @@
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
                         <li class="active">
-                            <a href="{{url('/institucional')}}" class="active cyan gradient-shadow">
+                            <a href="{{url('/institucional')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Modern">Quem somos</span>
                             </a>
@@ -486,14 +486,14 @@
 
 
                         <li class="">
-                            <a href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/page-account-settings" class="">
+                        <a href="{{url('/projetos/create')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Account Settings">Criar projeto</span>
                             </a>
                         </li>
 
                         <li class="">
-                            <a href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/page-blank" class="">
+                        <a href="{{url('projetos/lista')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Page Blank">Listar Projetos</span>
                             </a>

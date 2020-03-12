@@ -31,7 +31,7 @@ class InstituteController extends Controller
         $instituto->email = $data['email'];
         $instituto->descripition = $data['descripition'];
         $instituto->logo = store_file($request, 'logo', 'logo');
-
+        $instituto->slug = createSlug($data['name'], $instituto->id, 'institutes');
         if (!$instituto->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao enviar formulário, tente novamento');
         }
@@ -39,14 +39,14 @@ class InstituteController extends Controller
         return redirect()->route('institutos.index');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        return view('institutosDetails', ['institute' => Institute::findOrFail($id), 'projects' => Project::where('institute_id', $id)]);
+        return view('institutosDetails', ['institute' => Institute::where('slug', $slug)->firstOrFail()]);
     }
 
     public function edit($id)
     {
-        return view('updateInstitute', [
+        return view('EditInstitute', [
             'institutes' => Institute::findOrFail($id),
             'projects' => Project::all()
         ]);
@@ -59,10 +59,10 @@ class InstituteController extends Controller
         $institute = Institute::findOrFail($id);
         $institute->name = $data['name'];
         $institute->email = $data['email'];
-
         $institute->descripition = $data['descripition'];
-
+        $institute->slug = createSlug($data['name'], $institute->id, 'institutes');
         $institute->logo = store_file($request, 'logo', 'logo');
+
         if (!$institute->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao editar instituto');
         }
@@ -77,7 +77,7 @@ class InstituteController extends Controller
         if (!$institute->delete()) {
             return redirect()->back()->withInput()->withErrors('Erro ao deletar instituto');
         }
-        return redirect()->route('institutos.index');
+        return redirect()->route('list.institute');
     }
 
 }

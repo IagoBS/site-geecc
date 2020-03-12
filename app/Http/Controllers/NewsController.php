@@ -40,7 +40,7 @@ class NewsController extends Controller
         $news->category_id = $data['category'];
         $news->title = $data['title'];
         $news->content = $data['content'];
-        $news->slug = $data['title'];
+        $news->slug = createSlug($data['title'], $news->id, 'news');
 
         if (!$news->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
@@ -55,12 +55,12 @@ class NewsController extends Controller
 
     public function show($slug)
     {
-        return view('getIndex', ['news' => News::findOrFail($slug)]);
+        return view('getIndex', ['news' => News::where('slug', $slug)->firstOrFail()]);
     }
 
     public function edit($id)
     {
-        return view('update', [
+        return view('newsEdit', [
             'news' => News::findOrFail($id),
             'categories' => Category::all(),
             'authors' => User::all()
@@ -76,7 +76,7 @@ class NewsController extends Controller
         $news->user_id = $data['author'];
         $news->category_id = $data['category'];
         $news->content = $data['content'];
-
+        $news->slug = createSlug($data['title'], $news->id, 'news');
         if (!$news->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
@@ -89,7 +89,7 @@ class NewsController extends Controller
     {
         $news =  News::findOrFail($id);
         $news->delete();
-        return redirect()->route('news.lista');
+        return redirect()->route('list.news');
     }
-    
+
 }

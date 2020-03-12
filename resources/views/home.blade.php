@@ -6,46 +6,45 @@
 
 <div class="container">
     @foreach($news as $noticia)
-
     <div class="row mt-2">
-
-
         <div class="col s12 m6 l4 card-width">
             <div class="card-panel border-radius-6 mt-10 card-animation-1">
-                <a href="{{url('/news' . " / " . $noticia->id)}}">
+            
+                <a href="{{url('/news' . "/" . $noticia->slug)}}">
                     @if(count($noticia->gallery) > 0)
                     <img class="responsive-img border-radius-8 z-depth-4 image-n-margin"
                         src="{{url('storage/' . $noticia->gallery[0]->photo)}}" alt="images">
                     @endif
                 </a>
                 <h6><a href="#" class="mt-5">{{$noticia->title}}</a></h6>
-               
+
                 <p class="">Criado em: {{date('d/m/Y H:i', strtotime($noticia->created_at))}}</p>
                 <p><span>Categoria: {{$noticia->category->name}}</span></p>
             </div>
         </div>
         @endforeach
     </div>
+</div>
 
-    <div class="row">
-        <div class="col s12">
-            <ul class="pagination">
-                <li class="disabled">
-                    <a href="#!">
-                        <i class="material-icons">chevron_left</i>
-                    </a>
-                </li>
-                <li class="active"><a href="#!">1</a></li>
+<div class="row">
+    <div class="col s12">
+        <ul class="pagination">
+            <li class="disabled">
+                <a href="#!">
+                    <i class="material-icons">chevron_left</i>
+                </a>
+            </li>
+            <li class="active"><a href="#!">1</a></li>
 
-                <li class="waves-effect">
-                    <a href="#!">
-                        <i class="material-icons">chevron_right</i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <li class="waves-effect">
+                <a href="#!">
+                    <i class="material-icons">chevron_right</i>
+                </a>
+            </li>
+        </ul>
     </div>
 </div>
+
 
 
 <div class="section  blue darken-3 ">

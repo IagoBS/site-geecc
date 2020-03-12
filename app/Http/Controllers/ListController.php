@@ -7,16 +7,21 @@ use App\Category;
 use App\Gallery;
 use App\Institute;
 use App\News;
+use App\Project;
 use App\User;
 
 class ListController extends Controller
 {
     public function news() {
         $news = News::with(['user', 'gallery', 'category'])->get();
-        return view('newsLista', compact('news'));
+        return view('listanews', compact('news'));
     }
     public function institute() {
         $institutes = Institute::all();
-        return view('institutosList', compact('institutes'));
+        return view('listaInstitutos', compact('institutes'));
+    }
+    public function projets() {
+        $projects = Project::all();
+        return view('listaProjetos', compact('projects'));
     }
 }

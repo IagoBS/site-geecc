@@ -1,18 +1,19 @@
-@extends('layouts.template')
+@extends('layouts.dashboard')
 @section('title', 'Criar projeto')
-@section('content')
+@section('dashboard')
 
 <div class="container">
+    @if ($errors->any())
+    <div class="alert alert-secondary">
+        @foreach ($errors->all() as $error )
+        <ul>
+            <li>{{$error}}</li>
+        </ul>
+        @endforeach
+        @endif
     <form action="{{route('projetos.store')}}" method="post" id="project" enctype="multipart/form-data">
         @csrf
-        @if ($errors->any())
-        <div class="alert alert-secondary">
-            @foreach ($errors->all() as $error )
-            <ul>
-                <li>{{$error}}</li>
-            </ul>
-            @endforeach
-            @endif
+        <h1 class="center">Criar projeto</h1>
             <div class="row margin">
                 <div class="input-field col s12">
                     <input type="text" name="name" id="name">
@@ -36,11 +37,13 @@
 
             <div class="input-group-lg form-group">
                 <label for="descripition">Descrição do projeto</label>
-                <textarea name="descripition" id="descripition" cols="120" rows="10" placeholder="Descrição do projeto"></textarea>
+                <textarea name="descripition" id="descripition" cols="120" rows="10"
+                    placeholder="Descrição do projeto"></textarea>
             </div>
-            <div class = "row">
-               <input type="file" name="logo" id="logo" placeholder="Logo do projeto">
-               <label for="logo">Logo do projeto</label>
+            <br>
+            <div class="row">
+                <input type="file" name="logo" id="logo" placeholder="Logo do projeto">
+                <label for="logo">Logo do projeto</label>
             </div>
     </form>
     <div class="d-flex justify-content-end">
@@ -52,5 +55,5 @@
       var elems = document.querySelectorAll('select');
       var instances = M.FormSelect.init(elems);
     });
-  </script>
+</script>
 @endsection

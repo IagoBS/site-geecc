@@ -4,9 +4,7 @@
 <div class="container">
     <h3 class="center ">Criar conta</h3>
     <form action="{{route('news.store')}}" id="form" method="POST" enctype="multipart/form-data">
-
         @csrf
-
         @if ($errors->any())
         <div class="red">
             @foreach ($errors->all() as $error )
@@ -41,12 +39,12 @@
         </div>
         <div class="row margin">
             <div class="input-field col s12">
-                <input type="file" name="image" id="image">
+                <input type="file" name="image" id="image" multiple>
 
             </div>
         </div>
     </form>
-    <button type="submit" form="form" class="btn btn-primary">Criar notícia</button>
+    <button type="submit" form="form" class="btn btn-primary" >Criar notícia</button>
 
 </div>
 <script>

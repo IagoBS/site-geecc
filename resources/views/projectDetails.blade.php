@@ -14,10 +14,10 @@
                 </ul>
             </div>
             <div class="col s6 offset-s3 m6 center">
-            <img class="responsive-img" src="{{$projects->logo}}">
+            <img class="responsive-img" src="{{url('/storage/' . $projects->logo)}}">
             </div>
         </div>
-       
+
     </div>
 </div>
 <div class="container">

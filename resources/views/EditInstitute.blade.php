@@ -1,11 +1,11 @@
-@extends('layouts.template')
+@extends('layouts.dashboard')
 @section('title', 'Editar instituto')
-@section('content')
+@section('dashboard')
 <div class="shadow-sm p-3 mb-5 bg-white rounded">
     <form action="{{route('institutos.update', $institutes->id)}}" method="post" id="update" enctype="multipart/form-data">
         @csrf
         @method('put')
-        <h1 class="text-center">EDITAR INSTITUTO</h1>
+        <h1 class="center">EDITAR INSTITUTO</h1>
         <div class="input-group-lg form-group">
             <label for="name">Editar nome do instituto</label>
             <input type="text" name="name" id="name" class="form-control" value="{{ $institutes->name }}">

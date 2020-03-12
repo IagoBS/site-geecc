@@ -44,8 +44,8 @@ class ProjectsController extends Controller
         $project->institute_id = $data['institute'];
         $project->about = $data['about'];
         $project->descripition = $data['descripition'];
+        $project->slug = createSlug($data['name'], $project->id, 'projects');
 
-      
         $project->logo =  store_file($request, 'logo', 'logo');
         if (!$project->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar projeto');
@@ -59,13 +59,11 @@ class ProjectsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
 
         return view('projectDetails', [
-            'projects' => Project::findOrFail($id),
-            'institute' => Institute::all()
-        ]);
+            'projects' => Project::where('slug', $slug)->firstOrFail()]);
     }
 
     /**
@@ -111,6 +109,6 @@ class ProjectsController extends Controller
         if(!$project->delete()) {
             return redirect()->back()->withInput()->withErrors('Erro ao editar projeto');
         }
-        return redirect()->route('projetos.index');
+        return redirect()->route('list.project');
     }
 }

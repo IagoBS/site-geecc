@@ -40,7 +40,16 @@
                                 Institutos <i class="material-icons right">arrow_drop_down</i>
                             </a>
                     </li>
-
+                    @auth
+                    <li>
+                        <a href="{{url('/dashboard')}}" class="nav-itens">
+                        Dashboard
+                        </a>
+                    </li>
+                    <li>
+                    <a href="">Perfil</a>
+                    </li>
+                    @endauth
                 </ul>
 
                 <ul id="dropdown-menu" class="dropdown-content">
@@ -81,6 +90,7 @@
                                     Sociais</a></li>
                         <li><a href="https://www.clubeespirita.com.br/contato">Entre
                                     em Contato</a></li>
+
                     </ul>
                 </div>
 

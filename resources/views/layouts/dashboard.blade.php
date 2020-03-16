@@ -9,24 +9,35 @@
     <meta name="csrf-token" content="Qrg0QCN2CXrUbdipEKAOELkLWd9w2aQXgYRXMJUX">
 
     <title>@yield('title')</title>
-    <link rel="apple-touch-icon" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/favicon/apple-touch-icon-152x152.png">
+    <link rel="apple-touch-icon"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/favicon/apple-touch-icon-152x152.png">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/vendors.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/vendors.min.css">
     <!-- BEGIN: VENDOR CSS-->
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/animate-css/animate.css">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist.min.css">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-tooltip.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/animate-css/animate.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist.min.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-tooltip.css">
     <!-- END: VENDOR CSS-->
     <!-- BEGIN: Page Level CSS-->
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/materialize.css">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/style.css">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/dashboard-modern.css">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/intro.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/materialize.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/style.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/dashboard-modern.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/intro.css">
     <!-- END: Page Level CSS-->
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/laravel-custom.css">
-    <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/custom/custom.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/laravel-custom.css">
+    <link rel="stylesheet" type="text/css"
+        href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/custom/custom.css">
     <!-- END: Custom CSS-->
     <style type="text/css">
         /* Chart.js */
@@ -35,6 +46,7 @@
             from {
                 opacity: .99
             }
+
             to {
                 opacity: 1
             }
@@ -80,7 +92,8 @@
 
 
 <body class="vertical-layout page-header-light vertical-menu-collapsible
-        vertical-menu-nav-dark 2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns" style="">
+        vertical-menu-nav-dark 2-columns" data-open="click" data-menu="vertical-modern-menu" data-col="2-columns"
+    style="">
 
     <!-- BEGIN: Header-->
     <header class="page-topbar" id="header">
@@ -113,11 +126,12 @@
                     <div class="nav-wrapper">
                         <form id="navbarForm">
                             <div class="input-field search-input-sm">
-                                <input class="search-box-sm mb-0" type="search" required="" placeholder="Explore Materialize" id="search" data-search="template-list">
+                                <input class="search-box-sm mb-0" type="search" required=""
+                                    placeholder="Explore Materialize" id="search" data-search="template-list">
                                 <label class="label-icon active" for="search">
-                                        <i class="material-icons
+                                    <i class="material-icons
                                             search-sm-icon">search</i>
-                                    </label>
+                                </label>
                                 <i class="material-icons search-sm-close">close</i>
                                 <ul class="search-list collection
                                         search-list-sm display-none ps">
@@ -151,13 +165,14 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/pdf-image.png" width="24" height="30" alt="sample
+                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/pdf-image.png"
+                                    width="24" height="30" alt="sample
                                         image">
                             </div>
                             <div class="member-info display-flex
                                     flex-column">
                                 <span class="black-text">
-                                        Two new item submitted</span>
+                                    Two new item submitted</span>
                                 <small class="grey-text">Marketing Manager</small>
                             </div>
                         </div>
@@ -171,13 +186,14 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/doc-image.png" width="24" height="30" alt="sample
+                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/doc-image.png"
+                                    width="24" height="30" alt="sample
                                         image">
                             </div>
                             <div class="member-info display-flex
                                     flex-column">
                                 <span class="black-text">52 Doc file
-                                        Generator</span>
+                                    Generator</span>
                                 <small class="grey-text">FontEnd Developer</small>
                             </div>
                         </div>
@@ -191,15 +207,16 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/xls-image.png" width="24" height="30" alt="sample
+                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/xls-image.png"
+                                    width="24" height="30" alt="sample
                                         image">
                             </div>
                             <div class="member-info display-flex
                                     flex-column">
                                 <span class="black-text">25 Xls File
-                                        Uploaded</span>
+                                    Uploaded</span>
                                 <small class="grey-text">Digital Marketing
-                                        Manager</small>
+                                    Manager</small>
                             </div>
                         </div>
                         <div class="status"><small class="grey-text">20kb</small></div>
@@ -212,7 +229,8 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/jpg-image.png" width="24" height="30" alt="sample
+                                <img src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/icon/jpg-image.png"
+                                    width="24" height="30" alt="sample
                                         image">
                             </div>
                             <div class="member-info display-flex
@@ -236,7 +254,9 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img class="circle" src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-7.png" width="30" alt="sample image"></div>
+                                <img class="circle"
+                                    src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-7.png"
+                                    width="30" alt="sample image"></div>
                             <div class="member-info display-flex
                                     flex-column">
                                 <span class="black-text">John Doe</span>
@@ -252,7 +272,9 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img class="circle" src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-8.png" width="30" alt="sample image">
+                                <img class="circle"
+                                    src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-8.png"
+                                    width="30" alt="sample image">
                             </div>
                             <div class="member-info display-flex
                                     flex-column">
@@ -269,7 +291,9 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img class="circle" src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-10.png" width="30" alt="sample image">
+                                <img class="circle"
+                                    src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-10.png"
+                                    width="30" alt="sample image">
                             </div>
                             <div class="member-info display-flex
                                     flex-column">
@@ -286,7 +310,9 @@
                         <div class="display-flex align-item-center
                                 flex-grow-1">
                             <div class="avatar">
-                                <img class="circle" src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-12.png" width="30" alt="sample image">
+                                <img class="circle"
+                                    src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/avatar/avatar-12.png"
+                                    width="30" alt="sample image">
                             </div>
                             <div class="member-info display-flex
                                     flex-column">
@@ -315,20 +341,22 @@
         </ul>
     </header>
 
- <aside class="sidenav-main nav-expanded nav-lock nav-collapsible blue  sidenav-gradient   sidenav-active-rounded  sidenav-dark">
+    <aside
+        class="sidenav-main nav-expanded nav-lock nav-collapsible blue  sidenav-gradient   sidenav-active-rounded  sidenav-dark">
         <div class="brand-sidebar">
             <h1 class="logo-wrapper">
-            <a class="brand-logo darken-1" href="{{url('/')}}">
+                <a class="brand-logo darken-1" href="{{url('/')}}">
                     <img src="{{asset('imagens/geec.png')}}" alt="">
                     <span class="logo-text hide-on-med-and-down">
-                            GEEC
-                        </span>
+                        GEEC
+                    </span>
                 </a>
                 <a class="navbar-toggler" href="javascript:void(0)"><i
-                            class="material-icons">radio_button_checked</i></a></h1>
+                        class="material-icons">radio_button_checked</i></a></h1>
         </div>
         <ul class="sidenav sidenav-collapsible leftside-navigation
-                collapsible sidenav-fixed menu-shadow ps ps--active-y" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion" style="transform:
+                collapsible sidenav-fixed menu-shadow ps ps--active-y" id="slide-out" data-menu="menu-navigation"
+            data-collapsible="menu-accordion" style="transform:
                 translateX(0px);">
 
             <li class="bold active open">
@@ -355,10 +383,22 @@
                             </a>
                         </li>
                         <li>
-                        <a href="{{url('/contato/listar')}}" class="">
-                            <i class="material-icons">radio_button_unchecked</i>
-                            <span>Lista de contatos</span>
-                        </a>
+                            <a href="{{url('/contato/listar')}}" class="">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span>Lista de contatos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/institucional/create')}}">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span>Criar Quem Somos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/institucional/1/edit')}}">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span>Editar Quem Somos</span>
+                            </a>
                         </li>
                     </ul>
                 </div>
@@ -374,31 +414,24 @@
                         <li class="">
 
 
-                                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
-                                    <li class="">
+                                <li class="">
                                     <a href="{{url('/registro')}}" class="">
-                                            <i class="material-icons">radio_button_unchecked</i>
-                                            <span data-i18n="Modern Menu">Registrar usuário</span>
-                                        </a>
-                                    </li>
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Modern Menu">Registrar usuário</span>
+                                    </a>
+                                </li>
 
-                                    <li class="">
-                                    <a href="{{url('/usuario/' . '1' . '/edit')}}" class="">
-                                            <i class="material-icons">radio_button_unchecked</i>
-                                            <span data-i18n="Navbar Dark">Editar perfil</span>
-                                        </a>
-                                    </li>
-
-                                    <li class="">
-                                    <a href="" class="">
-                                            <i class="material-icons">radio_button_unchecked</i>
-                                            <span data-i18n="Gradient Menu">Excluir usuário</span>
-                                        </a>
-                                    </li>
+                                <li class="">
+                                    <a href="{{url('/usuarios/lista')}}" class="">
+                                        <i class="material-icons">radio_button_unchecked</i>
+                                        <span data-i18n="Navbar Dark">Listar usuário</span>
+                                    </a>
+                                </li>
 
 
-                                </ul>
+                            </ul>
 
                         </li>
 
@@ -408,7 +441,8 @@
                                 <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
                                     <li class="">
-                                        <a href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-5/" class="">
+                                        <a href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-5/"
+                                            class="">
                                             <i class="material-icons">radio_button_unchecked</i>
                                             <span data-i18n="Horizontal
                                                     Menu">Horizontal Menu</span>
@@ -434,14 +468,14 @@
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
                         <li class="">
-                        <a href="{{url('/news')}}" class="">
+                            <a href="{{url('/news')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Invoice List">Criar notícia</span>
                             </a>
                         </li>
 
                         <li class="">
-                        <a href="{{url('news/lista')}}" class="">
+                            <a href="{{url('news/lista')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Invoice View">Listar notícias</span>
                             </a>
@@ -459,14 +493,14 @@
                     <ul class="collapsible collapsible-sub" data-collapsible="accordion">
 
                         <li class="">
-                        <a href="{{route('institutos.create')}}" class="">
+                            <a href="{{route('institutos.create')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Products Page">Criar Instituto</span>
                             </a>
                         </li>
 
                         <li class="">
-                        <a href="{{route('list.institute')}}" class="">
+                            <a href="{{route('list.institute')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Pricing">Lista Institutos</span>
                             </a>
@@ -486,14 +520,14 @@
 
 
                         <li class="">
-                        <a href="{{url('/projetos/create')}}" class="">
+                            <a href="{{url('/projetos/create')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Account Settings">Criar projeto</span>
                             </a>
                         </li>
 
                         <li class="">
-                        <a href="{{url('projetos/lista')}}" class="">
+                            <a href="{{url('projetos/lista')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Page Blank">Listar Projetos</span>
                             </a>
@@ -519,7 +553,8 @@
         </ul>
         <div class="navigation-background"></div>
         <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium
-                waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
+                waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i
+                class="material-icons">menu</i></a>
     </aside>
     <!-- END: SideNav-->
 
@@ -542,23 +577,42 @@
 
     <!-- END: Footer-->
     <!-- BEGIN VENDOR JS-->
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/vendors.min.js"></script>
+    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/vendors.min.js">
+    </script>
     <!-- BEGIN VENDOR JS-->
     <!-- BEGIN PAGE VENDOR JS-->
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartjs/chart.min.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist.min.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-tooltip.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-fill-donut.min.js"></script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartjs/chart.min.js">
+    </script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist.min.js">
+    </script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-tooltip.js">
+    </script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-fill-donut.min.js">
+    </script>
     <!-- END PAGE VENDOR JS-->
     <!-- BEGIN THEME  JS-->
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/plugins.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/search.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/custom/custom-script.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/scripts/customizer.js"></script>
+    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/plugins.js">
+    </script>
+    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/search.js">
+    </script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/custom/custom-script.js">
+    </script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/scripts/customizer.js">
+    </script>
     <!-- END THEME  JS-->
     <!-- BEGIN PAGE LEVEL JS-->
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/scripts/dashboard-modern.js"></script>
-    <script src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/scripts/intro.js"></script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/scripts/dashboard-modern.js">
+    </script>
+    <script
+        src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/js/scripts/intro.js">
+    </script>
     <div class="chartist-tooltip current-balance-tooltip"></div>
     <div class="chartist-tooltip total-transaction-tooltip" style="top:
             380px; left: 1392px;"></div>
@@ -578,4 +632,3 @@
 </body>
 
 </html>
-

@@ -2,7 +2,7 @@
  @section('title', 'Criar notícia')
  @section('dashboard')
 <div class="container">
-    <h3 class="center ">Criar conta</h3>
+    <h3 class="center ">Criar notícia</h3>
     <form action="{{route('news.store')}}" id="form" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())

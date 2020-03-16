@@ -24,4 +24,8 @@ class ListController extends Controller
         $projects = Project::all();
         return view('listaProjetos', compact('projects'));
     }
+    public function user() {
+        $users = User::all();
+        return view('listaUsuarios', compact('users'));
+    }
 }

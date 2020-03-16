@@ -19,7 +19,6 @@ use App\Mail\SendMailContact;
 
 Route::group(['middleware' => ['auth', 'user.admin']], function () {
 
-
     Route::get('/usuario/{id}', 'UserController@show')->name('usuario.show');
     Route::get('/registro', 'UserController@create')->name('usuario.create');
     Route::post('/registro', 'UserController@store')->name('usuario.store');
@@ -37,6 +36,9 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::get('/news/lista', 'ListController@news')->name('list.news');
     Route::get('institutos/lista', 'ListController@institute')->name('list.institute');
     Route::get('projetos/lista', 'ListController@projets')->name('list.project');
+    Route::get('usuarios/lista', 'ListController@user')->name('list.user');
+    Route::get('categoria/create', 'CategoryController@create')->name('category.create');
+    Route::post('/categoria', 'CategoryController@store')->name('category.store');
 });
 Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
 

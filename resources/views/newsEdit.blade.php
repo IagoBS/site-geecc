@@ -7,13 +7,7 @@
         <form action="{{route('news.update', $news->id)}}" method="post" id="form">
             @csrf
             @method('put')
-            <div class="alert alert-secondary">
-                @foreach ($errors->all() as $error )
-                <ul>
-                    <li>{{$error}}</li>
-                </ul>
-                @endforeach
-            </div>
+            
             <label for="title">Editar título do texto</label>
             <div class="input-group-lg mb-3">
             <input type="text" name="title" id="title" class="form-control i" value="{{$news->title}}">

@@ -77,9 +77,7 @@ class NewsController extends Controller
         $news->category_id = $data['category'];
         $news->content = $data['content'];
         $news->slug = createSlug($data['title'], $news->id, 'news');
-        if (!$news->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
-        }
+        
         return redirect()->route('news.index');
     }
 

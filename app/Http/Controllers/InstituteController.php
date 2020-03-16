@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreInstitute;
 use App\Institute;
+use App\News;
 use App\Project;
 use Illuminate\Http\Request;
 
@@ -41,7 +42,7 @@ class InstituteController extends Controller
 
     public function show($slug)
     {
-        return view('institutosDetails', ['institute' => Institute::where('slug', $slug)->firstOrFail()]);
+        return view('institutosDetails', ['institutes' => Institute::where('slug', $slug)->firstOrFail(), 'news' =>  News::with(['user', 'gallery', 'category'])->where('category.id', '=', 'institutes.id') ]);
     }
 
     public function edit($id)

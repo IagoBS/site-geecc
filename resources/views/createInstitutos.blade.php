@@ -4,7 +4,8 @@
 
 <div class="container">
     <form action="{{route('institutos.store')}}" method="post" id="form" enctype="multipart/form-data">
-        @csrf @if ($errors->any())
+        @csrf
+        @if ($errors->any())
         <div class="alert alert-secondary">
             @foreach ($errors->all() as $error )
             <ul>

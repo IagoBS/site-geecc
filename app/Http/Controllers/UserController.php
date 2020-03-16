@@ -51,25 +51,22 @@ class UserController extends Controller
     }
     public function update(Request $request, $id)
     {
-
-        $user = Auth::user($id);
+        $user = User::findOrFail($id);
+        dd($user);
         $data = $request->all();
-      
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->about = $data['about'];
         $user->type = $data['type'];
-        if (!$user->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao editar usuário');
-        }
+        $user->save();
+
         return redirect()->route('dashboard');
     }
     public function destroy($id)
     {
         $user  = News::findOrFail($id);
-        if (!$user->delete()) {
-            throw new \Exception('Não foi possível deletar usuário');
-        }
-        return redirect()->route('news.index');
+        $user->delete();
+        Auth::logout();
+        return redirect()->route('list.user');
     }
 }

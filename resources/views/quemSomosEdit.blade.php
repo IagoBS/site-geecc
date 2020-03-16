@@ -1,12 +1,13 @@
-@extends('layouts.template')
+@extends('layouts.dashboard')
 @section('title', 'Ediar Quem somos')
-@section('content')
+@section('dashboard')
 <div class="container">
     <div class="shadow-sm p-3 mb-5 bg-white rounded">
         <h1 class="text-center">Inserir quem somos</h1>
-        <form action="" method="post" id="form">
+    <form action="{{route('institucional.update', $institucional->id)}}" method="post" id="form">
             @csrf
             @method('put')
+           
             <label for="about">Sobre o GEEC</label>
             <div class="input-group-lg form-group">
             <textarea name="about" id="about" cols="120" rows="10" class="form-control" placeholder="Sobre">{{$institucional->about}}</textarea>

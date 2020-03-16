@@ -4,12 +4,13 @@
     <div class="container">
         <form action="{{route('forget.store')}}" method="post" id="form">
             @csrf
-            <div class="input-group-lg form-group">
-                <label for="email">Seu endereço de email</label>
-                <br>
-                <input type="text" name="email" id="email" class="form-control-lg my-2" >
+            <div class="row margin">
+                <div class="input-field col s12">
+                    <i class="material-icons prefix pt-2">person_outline</i>
+                   <input type="password" name="password" id="password" >
+                    <label for="password" class="center-align">Nova senha</label>
+                </div>
             </div>
-            <button type="submit" form="form" class="btn btn-block">Enviar</button>
         </form>
     </div>
 @endsection

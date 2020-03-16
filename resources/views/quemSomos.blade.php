@@ -2,12 +2,31 @@
 @section('title', 'Quem somos')
 @section('content')
 <div class="container">
-    @foreach ($institucional as $quemsomos)
-{{ $quemsomos->about }}
-{{ $quemsomos->values }}
-{{ $quemsomos->values }}
+    @foreach ($institucional as $quemSomos)
 
-    @endforeach
+    <h1 class="center">Quem somos</h1>
+<p>{{$quemSomos->about}}</p>
+    <div class="row">
+        <div class="col s12 l4">
+            <img class="promo" src="images/metaphor.png">
+            <h4 class="center">Missão</h4>
+        <p>{{$quemSomos->mission}}</p>
+            <br>
+        </div>
 
+        <div class="col s12 l4">
+            <img class="promo" src="images/bold.png">
+            <h4 class="center">Valores</h4>
+        <p>{{$quemSomos->values}}</p>
+            <br>
+        </div>
+
+        <div class="col s12 l4">
+            <img class="promo" src="images/motion.png">
+            <h4 class="center">Visão</h4>
+        <p>{{$quemSomos->vision}}</p>
+        </div>
+    </div>
 </div>
+@endforeach
 @endsection

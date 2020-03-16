@@ -19,6 +19,7 @@ class CreateInstitutesTable extends Migration
             $table->string('logo');
             $table->longText('descripition');
             $table->string('email')->uniqid();
+            $table->string('slug');
             $table->timestamps();
         });
     }

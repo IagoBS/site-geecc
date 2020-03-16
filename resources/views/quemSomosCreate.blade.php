@@ -1,9 +1,9 @@
-@extends('layouts.template')
+@extends('layouts.dashboard')
 @section('title', 'Inserir Quem Somos')
-@section('content')
+@section('dashboard')
 <div class="container">
     <div class="shadow-sm p-3 mb-5 bg-white rounded">
-        <h1 class="text-center">Inserir quem somos</h1>
+        <h1 class="center">Inserir quem somos</h1>
         <form action="{{route('institucional.store')}}" method="post" id="form">
             @csrf
             <label for="about">Sobre o GEEC</label>

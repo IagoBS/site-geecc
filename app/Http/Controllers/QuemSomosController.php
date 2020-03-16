@@ -35,8 +35,8 @@ class QuemSomosController extends Controller
         }
         return redirect()->route('institucional.index');
     }
+  
 
-   
 
     public function edit($id)
     {

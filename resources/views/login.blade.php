@@ -1,103 +1,82 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<html >
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta name="csrf-token" content="s5E9DCU26rVKPxOLHJnbkJ7susxdYnlZ4WXysJS7">
+
     <title>Login</title>
-    <style>
-        .login {
-            background-color: white;
-            width: 350px;
-            height: 120px;
-            left: 50%;
-            margin: -170px 0 0 -210px;
-            padding: 10px;
-            position: absolute;
-            top: 50%;
-        }
+    <link rel="apple-touch-icon" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/favicon/apple-touch-icon-152x152.png">
 
-        .butao {
-            margin: auto margin-bottom: 25px;
-        }
 
-        .label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
 
-        }
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/vendors.min.css">
 
-        .butao {
-            width: 330px;
-            border: 4px;
-            height: 30px;
-            color: white;
-            margin: 4px;
-        }
+  <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/materialize.css">
+  <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/style.css">
 
-        body {
-            background-color: white;
-        }
-        .link {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-        .esqueceu {
-            display: flex;
-            flex-direction: column-reverse;
-            align-items: center;
-        }
-        main {
-            min-height: calc(100vh - 100px - 180px);
-        }
-    </style>
-</head>
 
-<body>
-    <main class="main">
+  <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/login.css">
+
+
+  <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/laravel-custom.css">
+  <link rel="stylesheet" type="text/css" href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/custom/custom.css">
+
+  </head>
+
+
+  <body >
+    <div class="row">
+      <div class="col s12">
         <div class="container">
-            <div class="form">
-            <div class="login">
-                @if ($errors->any())
-                <div class="alert alert-secondary">
-                    @foreach ($errors->all() as $error )
-                    <ul>
-                        <li>{{$error}}</li>
-                    </ul>
-                    @endforeach
-                </div>
-                @endif
-                <form action="{{route('login.store')}}" id="login" method="POST" class="form-group">
-                    @csrf
-                    <div class="row">
-                        <div class="col col-sm-12 col-mb-6">
-                            <label for="email" class="label">Email</label>
-                            <input type="text" name="email" id="email" class="form-control" class="form-control">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col col-sm-12 col-mb-6">
-                            <label for="password" class="label">Senha</label>
-                            <input type="password" name="password" id="password" class="form-control">
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary butao" form="login">Logar</button>
-                    <a href="#" class="link">Não possui conta?</a>
-                    <a href="#" class="esqueceu">Esqueceu a senha?</a>
-                </form>
-
-                </div>
-            </div>
+          <!--  main content -->
+          <div id="login-page" class="row">
+    <div class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
+    <form class="login-form" action="{{route('login.store')}}" id="form" method="POST">
+        @csrf
+        <div class="row">
+          <div class="input-field col s12">
+            <h5 class="ml-4 center">Login</h5>
+          </div>
         </div>
-    </main>
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-</body>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">person_outline</i>
+            <input id="email" name="email" type="text">
+            <label for="email"  class="center-align">Email</label>
+          </div>
+        </div>
+        <div class="row margin">
+          <div class="input-field col s12">
+            <i class="material-icons prefix pt-2">lock_outline</i>
+            <input id="password" name="password" type="password">
+            <label for="password">Senha</label>
+          </div>
+        </div>
 
-</html>
+    </form>
+            <div class="row">
+              <div class="input-field col s12">
+               <button form="form" type="submit" class="btn  waves-effect waves-light border-round gradient-45deg-blue-deep-orange col s12">Login</button>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="input-field col s6 m6 l6">
+                <p class=""><a href="blue darken-1">Esqueceu a senha?</a>
+                </p>
+              </div>
+            </div>
+    </div>
+  </div>
+        </div>
+
+        <div class="content-overlay"></div>
+      </div>
+    </div>
+
+
+
+
+  </body></html>

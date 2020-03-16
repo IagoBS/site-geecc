@@ -21,6 +21,7 @@ class CreateNewsTable extends Migration
             $table->foreign('category_id')->references('id')->on('categories');
             $table->string('title');
             $table->longText('content');
+            $table->string('slug');
             $table->timestamps();
         });
     }

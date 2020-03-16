@@ -1,35 +1,25 @@
-
 @extends('layouts.template')
 @section('title', 'Contato')
 @section('content')
-<div class="container">
-    <form action="{{route('contato.store')}}" method="post" id="form">
-        @csrf
-
-        @if ($errors->any())
-        <div class="alert alert-secondary">
-            @foreach ($errors->all() as $error )
-            <ul>
-                <li>{{$error}}</li>
-            </ul>
-            @endforeach
-            @endif
-            <div class="input-group-lg">
-
-                <input type="text" name="name" id="name" placeholder="Escreva seu nome" class="form-control">
-            </div>
-            <div class="input-group-lg">
-                <input type="email" name="email" id="email" placeholder="Escreva seu email" class="form-control">
-            </div>
-            <div class="input-group-lg">
-                <input type="tel" name="telephone" id="telephone"   class="form-control" placeholder="Escreva seu telefone()">
-            </div>
-            <div class="input-group-lg">
-                <textarea name="message" id="message" cols="120" class="form-control" rows="10"></textarea>
-            </div>
-    </form>
-    <button type="submit" form="form">Enviar</button>
-</div>
-
-
+        <div class="container">
+        <form action="{{route('contato.store')}}" method="POST" id="form">
+            @csrf
+                <div class="row margin">
+                    <i class="material-icons prefix pt-2">accessibility</i>
+                    <label for="name">Nome</label>
+                    <input type="text" name="name" id="name">
+                </div>
+                <div class="row margin">
+                    <i class="material-icons prefix pt-2">email</i>
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="email">
+                </div>
+                <div class="row margin">
+                    <i class="material-icons prefix pt-2">tablet_android</i>
+                    <label for="telephone">Telefone</label>
+                    <input type="tel" name="telephone" id="telephone">
+                </div>
+            </form>
+            <button type="submit" form="form" class="btn blue">Enviar</button>
+        </div>
 @endsection

@@ -21,6 +21,7 @@ class CreateProjectsTable extends Migration
             $table->foreign('institute_id')->references('id')->on('institutes');
             $table->string('logo');
             $table->longText('descripition');
+            $table->string('slug');
             $table->timestamps();
         });
     }

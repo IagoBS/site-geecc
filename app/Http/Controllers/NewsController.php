@@ -18,48 +18,49 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::with(['user', 'gallery', 'category'])->get();
-        var_dump(session()->get('teste'));
-        return view('news', compact('news'));
+
+        return view('home', compact('news'));
     }
 
     public function create()
     {
         $categories = Category::all();
-        $authors = User::all();
-        return view('createNews', compact('authors', 'categories'));
+
+        return view('createNews', compact('categories'));
     }
 
     public function store(Request $request)
     {
 
         $data = $request->all();
+
         $news = new News();
         $gallery = new Gallery();
-        $news->user_id = $data['author'];
+        $news->user_id = auth()->user()->id;
         $news->category_id = $data['category'];
         $news->title = $data['title'];
         $news->content = $data['content'];
+        $news->slug = createSlug($data['title'], $news->id, 'news');
 
         if (!$news->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
         }
 
-        $gallery->photo = store_file($request, 'image', 'image');
+        $gallery->news_id = $news->id;
+        $gallery->photo = store_file($request, "image", 'gallery');
+        $gallery->save();
 
-        if (!$gallery->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao enviar imagem');
-        }
         return redirect()->route('news.index');
     }
 
-    public function show($id)
+    public function show($slug)
     {
-        return view('getIndex', ['news' => News::findOrFail($id)]);
+        return view('getIndex', ['news' => News::where('slug', $slug)->firstOrFail()]);
     }
 
     public function edit($id)
     {
-        return view('update', [
+        return view('newsEdit', [
             'news' => News::findOrFail($id),
             'categories' => Category::all(),
             'authors' => User::all()
@@ -75,10 +76,8 @@ class NewsController extends Controller
         $news->user_id = $data['author'];
         $news->category_id = $data['category'];
         $news->content = $data['content'];
-
-        if (!$news->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao criar notícia');
-        }
+        $news->slug = createSlug($data['title'], $news->id, 'news');
+        
         return redirect()->route('news.index');
     }
 
@@ -87,9 +86,8 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $news =  News::findOrFail($id);
-        if (!$news->delete()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao deletar notícia, tente novamente');
-        }
-        return redirect()->route('news.index');
+        $news->delete();
+        return redirect()->route('list.news');
     }
+
 }

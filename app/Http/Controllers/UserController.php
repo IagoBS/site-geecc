@@ -37,34 +37,39 @@ class UserController extends Controller
     }
     public function show($id)
     {
+
         return view(
             'userDetails',
             [
                 'user' => User::findOrFail($id),
                 'news' => News::with(['user', 'gallery', 'category'])->get()
             ]
+
         );
     }
     public function edit($id)
     {
-        return view("userEdit", ['users' => User::findOrFail(auth()->user()->id)]);
+        return view("userEdit", ['users' => User::findOrFail($id)]);
     }
     public function update(Request $request, $id)
     {
-        $user = User::findOrFail($id);
-        dd($user);
         $data = $request->all();
+        $user = User::findOrFail($id);
+
         $user->name = $data['name'];
         $user->email = $data['email'];
         $user->about = $data['about'];
         $user->type = $data['type'];
-        $user->save();
+        
+        if(!$user->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao editar usuário');
+        }
+        return redirect()->back();
 
-        return redirect()->route('dashboard');
     }
     public function destroy($id)
     {
-        $user  = News::findOrFail($id);
+        $user  = User::findOrFail($id);
         $user->delete();
         Auth::logout();
         return redirect()->route('list.user');

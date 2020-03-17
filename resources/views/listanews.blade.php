@@ -44,7 +44,7 @@
             <td><span class="invoice-amount">{{$noticia->category->name}}</span></td>
             <td>
                 <div class="invoice-action">
-                    <a href="{{route('news.show', $noticia->id)}}" class="invoice-action-view mr-4">
+                    <a href="{{route('news.show', $noticia->slug)}}" class="invoice-action-view mr-4">
                         <i class="material-icons">remove_red_eye</i>
                     </a>
 

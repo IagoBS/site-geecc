@@ -37,19 +37,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        @if($users->type === "admin")
-                        <p>
-                            <label>
-                              <input type="checkbox" name="type" value="admin" checked="checked" />
-                              <span>Administrador</span>
-                            </label>
-                          </p>
-                          @else
-                          <label>
-                              <input type="checkbox" name="type" id="user">
-                              <span>Usuário</span>
-                          </label>
-                        @endif
+                       <select name="type" id="type">
+                           @for($i = 0; $i < 2; $i++)
+                           <option value="{{$i}}">{{$users->type}}</option>
+                           @endfor
+                       </select>
                     </div>
                 </div>
             </div>

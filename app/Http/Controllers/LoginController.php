@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreLoginRequest;
 use App\Http\Requests\StoreUpdateProductRequest;
 use App\User;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function store(Request $request)
+    public function store(StoreLoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 

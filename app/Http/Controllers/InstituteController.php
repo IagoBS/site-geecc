@@ -23,7 +23,7 @@ class InstituteController extends Controller
         return view('createInstitutos', compact('projects'));
     }
 
-    public function store(Request $request)
+    public function store(StoreInstitute $request)
     {
         $data = $request->all();
         var_dump($data);
@@ -42,7 +42,12 @@ class InstituteController extends Controller
 
     public function show($slug)
     {
-        return view('institutosDetails', ['institutes' => Institute::where('slug', $slug)->firstOrFail(), 'news' =>  News::with(['user', 'gallery', 'category'])->where('category.id', '=', 'institutes.id') ]);
+
+        $data = [
+            'institutes' => Institute::where('slug', $slug)->firstOrFail(),
+            'news' =>  News::with(['user', 'gallery', 'category'])->where('category.slug', '=', )
+        ];
+        return view('institutosDetails', $data);
     }
 
     public function edit($id)

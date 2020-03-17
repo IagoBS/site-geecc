@@ -28,4 +28,8 @@ class ListController extends Controller
         $users = User::all();
         return view('listaUsuarios', compact('users'));
     }
+    public function category() {
+        $categories = Category::all();
+        return view('listaCategoria', compact('categories'));
+    }
 }

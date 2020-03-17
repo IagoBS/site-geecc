@@ -22,7 +22,11 @@ no-footer" id="DataTables_Table_0" role="grid">
             </th>
 
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
-                aria-label="Date: activate to sort column ascending" style="width: 162px;">Ver ou editar
+                aria-label="Date: activate to sort column ascending" style="width: 162px;">Ver 
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
+            aria-label="Date: activate to sort column ascending" style="width: 162px;">
+            editar
             </th>
             <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1"
                 aria-label="Amount: activate to sort column ascending" style="width: 228px;">Excluir
@@ -50,10 +54,13 @@ no-footer" id="DataTables_Table_0" role="grid">
                         <i class="material-icons">remove_red_eye</i>
                     </a>
 
-                    <a href="{{route('usuario.edit', $user->id)}}" class="invoice-action-edit">
-                        <i class="material-icons">edit</i>
-                    </a>
+
                 </div>
+            </td>
+            <td>
+                <a href="{{route('usuario.edit', $user->id)}}" class="invoice-action-edit">
+                    <i class="material-icons">edit</i>
+                </a>
             </td>
             <td>
                 <div class="invoice-action">

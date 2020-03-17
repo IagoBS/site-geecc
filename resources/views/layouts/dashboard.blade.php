@@ -15,15 +15,14 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/vendors.min.css">
-    <!-- BEGIN: VENDOR CSS-->
+    
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/animate-css/animate.css">
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist.min.css">
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/chartist-js/chartist-plugin-tooltip.css">
-    <!-- END: VENDOR CSS-->
-    <!-- BEGIN: Page Level CSS-->
+
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/themes/vertical-menu-nav-dark-template/materialize.css">
     <link rel="stylesheet" type="text/css"
@@ -32,15 +31,14 @@
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/dashboard-modern.css">
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/pages/intro.css">
-    <!-- END: Page Level CSS-->
-    <!-- BEGIN: Custom CSS-->
+
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/laravel-custom.css">
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/custom/custom.css">
-    <!-- END: Custom CSS-->
+
     <style type="text/css">
-        /* Chart.js */
+
 
         @keyframes chartjs-render-animation {
             from {
@@ -536,6 +534,32 @@
                 </div>
             </li>
 
+            <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan" href="javascript:void(0)" tabindex="0">
+                    <i class="material-icons">create</i>
+                    <span class="menu-title" data-i18n="Pages">Categoria</span>
+                </a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+
+
+
+                        <li class="">
+                            <a href="{{url('/categoria/create')}}" class="">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span data-i18n="Account Settings">Criar Categoria</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{{url('/categorias/lista')}}" class="">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span data-i18n="Page Blank">Listar Categoria</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
 
 

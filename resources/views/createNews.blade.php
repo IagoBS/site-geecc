@@ -6,12 +6,12 @@
     <form action="{{route('news.store')}}" id="form" method="POST" enctype="multipart/form-data">
         @csrf
         @if ($errors->any())
-        <div class="red">
-            @foreach ($errors->all() as $error )
+        <div class="card-content red-text center">
             <ul>
+            @foreach ($errors->all() as $error )
                 <li>{{$error}}</li>
+                @endforeach
             </ul>
-            @endforeach
         </div>
         @endif
 

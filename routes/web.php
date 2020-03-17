@@ -37,8 +37,12 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::get('institutos/lista', 'ListController@institute')->name('list.institute');
     Route::get('projetos/lista', 'ListController@projets')->name('list.project');
     Route::get('usuarios/lista', 'ListController@user')->name('list.user');
+    Route::get('categorias/lista', 'ListController@category')->name('list.category');
     Route::get('categoria/create', 'CategoryController@create')->name('category.create');
     Route::post('/categoria', 'CategoryController@store')->name('category.store');
+    Route::get('/categoria/{id}/edit', 'CategoryController@edit')->name('category.edit');
+    Route::put('/categoria/{id}', 'CategoryController@update')->name('category.update');
+    Route::delete('/categoria/{id}', 'CategoryController@destroy')->name('category.destroy');
 });
 Route::get('/dashboard', 'Dashboard@index')->name('dashboard');
 

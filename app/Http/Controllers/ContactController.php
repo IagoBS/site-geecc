@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Contact;
+use App\Http\Requests\StoreContact;
 use App\Mail\sendEmailContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -16,7 +17,7 @@ class ContactController extends Controller
 
         return view('contact');
     }
-    public function store(Request $request)
+    public function store(StoreContact $request)
     {
         $data = $request->all();
         $sendEmail = new Contact();
@@ -41,7 +42,7 @@ class ContactController extends Controller
 
             $contact = Contact::all();
             return view('contactListEmail', compact('contact'));
-     
+
     }
     public function show($id) {
         return view('', [

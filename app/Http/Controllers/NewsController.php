@@ -29,7 +29,7 @@ class NewsController extends Controller
         return view('createNews', compact('categories'));
     }
 
-    public function store(Request $request)
+    public function store(StoreNews $request)
     {
 
         $data = $request->all();
@@ -77,7 +77,7 @@ class NewsController extends Controller
         $news->category_id = $data['category'];
         $news->content = $data['content'];
         $news->slug = createSlug($data['title'], $news->id, 'news');
-        
+        $news->save();
         return redirect()->route('news.index');
     }
 

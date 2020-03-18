@@ -3,15 +3,17 @@
 @section('content')
 <div class="col s12 center-align">
 
-<h3>{{$institutes->name}}</h3>
+    <h3>{{$institutes->name}}</h3>
     <br>
 
     <hr>
 </div>
 <div class="container">
-    @foreach($news as $noticia)
     <div class="row mt-2">
+        @foreach($news as $noticia)
+
         <div class="col s12 m6 l4 card-width">
+
             <div class="card-panel border-radius-6 mt-10 card-animation-1">
 
                 <a href="{{url('/news' . "/" . $noticia->slug)}}">
@@ -24,6 +26,7 @@
 
                 <p class="">Criado em: {{date('d/m/Y H:i', strtotime($noticia->created_at))}}</p>
                 <p><span>Categoria: {{$noticia->category->name}}</span></p>
+            <p><span>Instituto: {{$noticia->institute->name}}</span></p>
             </div>
         </div>
         @endforeach

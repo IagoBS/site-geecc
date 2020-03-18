@@ -68,7 +68,10 @@ Route::resource('/rede-social', 'SocialNetworkController')->middleware(['user.ad
 Route::get('/contato', 'ContactController@index')->name('contato.index');
 Route::post('/contato', 'ContactController@store')->name('contato.store');
 
-
+Route::any('/serach/news', 'SerachController@news')->name('serach.news');
+Route::any('/serach/institutes', 'SerachController@institutes')->name('serach.institutes');
+Route::any('/serach/projects', 'SerachController@projects')->name('serach.projects');
+Route::any('/serach/category', 'SerachController@category')->name('serach.category');
 
 Route::get('/recuperar', 'ForgetPasswordController@index')->name('forget');
 Route::post('/recuperar', 'ForgetPasswordController@store')->name('forget.store');

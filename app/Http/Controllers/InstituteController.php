@@ -40,12 +40,12 @@ class InstituteController extends Controller
         return redirect()->route('institutos.index');
     }
 
-    public function show($slug)
+    public function show($id)
     {
 
         $data = [
-            'institutes' => Institute::where('slug', $slug)->firstOrFail(),
-            'news' =>  News::with(['user', 'gallery', 'category'])->where('category.slug', '=', )
+            'institutes' => Institute::findOrFail($id),
+            'news' =>  News::with(['user', 'gallery', 'category', 'institute'])->where('news.institute_id', '=', $id)->get()
         ];
         return view('institutosDetails', $data);
     }

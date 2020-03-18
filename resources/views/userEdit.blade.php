@@ -2,7 +2,7 @@
 @section('title', 'Editar usuário')
 @section('dashboard')
 <div class="col s12 m8 l12">
-    <form action="{{route('usuario.update', $users->id)}}" id="form">
+    <form action="{{route('usuario.update', $user->id)}}" id="form" method="POST">
         @csrf
         @method('put')
         <div class="row">
@@ -13,35 +13,36 @@
                 <div class="row margin">
                     <div class="input-field col s12">
                         <i class="material-icons prefix pt-2">person_outline</i>
-                        <input id="name" type="text" value="{{$users->name}}">
+                        <input name="name" type="text" value="{{$user->name}}">
                         <label for="name" class="center-align">Editar nome</label>
                     </div>
                 </div>
                 <div class="row margin">
                     <div class="input-field col s12">
                         <i class="material-icons prefix pt-2">mail_outline</i>
-                        <input id="email" type="email" value="{{$users->email}}">
+                        <input id="email" name="email" type="email" value="{{$user->email}}">
                         <label for="email" class="center-align">Editar email</label>
                     </div>
                 </div>
+
                 <div class="row">
                     <div class="input-field col s12">
-                        <i class="input-field col s12"></i>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input type="text" name="about" id="about" value="{{$users->about}}">
+                        <input type="text" name="about" id="about" value="{{$user->about}}">
                         <label for="about">Sobre você</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                       <select name="type" id="type">
-                           @for($i = 0; $i < 2; $i++)
-                           <option value="{{$i}}">{{$users->type}}</option>
-                           @endfor
-                       </select>
+                    <select name="type" id="type" >
+                        @if($user->type === 'user')
+                        <option value="user" selected>Usuário</option>
+                        <option value="admin" >Admin</option>
+                        @else
+                        <option value="admin" selected>Admin</option>
+                        <option value="user">Usuário</option>
+                        @endif
+                        </select>
+
                     </div>
                 </div>
             </div>

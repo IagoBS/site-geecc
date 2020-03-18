@@ -15,6 +15,7 @@ class CategoryController extends Controller
         $data = $request->all();
         $category = new Category();
         $category->name = $data['name'];
+        $category->slug = createSlug($data['name'], $category->id, 'categories');
         $category->save();
         return redirect()->route('dashboard');
     }
@@ -26,7 +27,7 @@ class CategoryController extends Controller
         $category = Category::findOrFail($id);
         $category->name = $data['name'];
         $category->save();
-        return redirect()->route('dashboard');
+        return redirect()->route('list.category');
     }
     public function destroy($id) {
         $category = Category::findOrFail($id);

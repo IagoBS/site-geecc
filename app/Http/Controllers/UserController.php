@@ -37,20 +37,23 @@ class UserController extends Controller
     }
     public function show($id)
     {
-
         return view(
             'userDetails',
             [
                 'user' => User::findOrFail($id),
-                'news' => News::with(['user', 'gallery', 'category'])->get()
+                'news' => News::with(['user', 'gallery', 'category'])->where('news.user_id', '=', $id)->get()
             ]
 
         );
     }
+
     public function edit($id)
     {
-        return view("userEdit", ['users' => User::findOrFail($id)]);
+        $user = User::findOrFail($id);
+
+        return view("userEdit", compact('user'));
     }
+
     public function update(Request $request, $id)
     {
         $data = $request->all();
@@ -60,13 +63,13 @@ class UserController extends Controller
         $user->email = $data['email'];
         $user->about = $data['about'];
         $user->type = $data['type'];
-        
-        if(!$user->save()) {
+        $user->photo = store_file($request, 'photo', 'image');
+        if (!$user->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao editar usuário');
         }
-        return redirect()->back();
-
+        return redirect()->route('list.user');
     }
+
     public function destroy($id)
     {
         $user  = User::findOrFail($id);

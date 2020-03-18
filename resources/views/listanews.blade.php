@@ -2,6 +2,16 @@
 @section('title', 'Dashboard')
 @section('dashboard')
 
+<form action="{{route('serach.news')}}" method="post">
+@csrf
+<div id="search-wrapper" class="card z-depth-0 search-image center-align p-35">
+    <div class="input-field inline">
+
+      <input placeholder="Pesquisar" id="first_name" name="filter" class="search-box validate white search-circle search-shadow">
+      <button type="submit" class="btn blue"><i class="material-icons">search</i></button>
+    </div>
+  </div>
+</form>
 <table class="table invoice-data-table white border-radius-4 pt-1 dataTable
     no-footer" id="DataTables_Table_0" role="grid">
 

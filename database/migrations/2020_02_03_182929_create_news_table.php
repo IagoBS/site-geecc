@@ -15,11 +15,17 @@ class CreateNewsTable extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('user_id')->unsigned()->index();
+
+            $table->bigInteger('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users');
-            $table->bigInteger('category_id')->unsigned()->index();
+
+            $table->bigInteger('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->bigInteger('institute_id')->references('id')->on('institutes');
+
+
+            $table->bigInteger('institute_id')->unsigned()->nullable();
+            $table->foreign('institute_id')->references('id')->on('institutes');
+
             $table->string('title');
             $table->longText('content');
             $table->string('slug');

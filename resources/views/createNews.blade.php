@@ -31,6 +31,14 @@
             </select>
         </div>
         <div class="row margin">
+            <label for="institute">Instituto</label>
+            <select name="institute" id="institute">
+                @foreach($institutes as $institute)
+                <option value="{{$institute->id}}">{{$institute->name}}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="row margin">
             <div class="input-field col s12">
                 <i class="material-icons prefix pt-2">wrap_text</i>
                 <textarea name="content" id="cotent" cols="120" class="materialize-textarea" rows="100"

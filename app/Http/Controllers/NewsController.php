@@ -7,6 +7,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Gallery;
 use App\Http\Requests\StoreNews;
+use App\Institute;
 use App\News;
 use App\User;
 use Illuminate\Contracts\Session\Session;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
+    
     public function index()
     {
         $news = News::with(['user', 'gallery', 'category'])->get();
@@ -25,8 +27,8 @@ class NewsController extends Controller
     public function create()
     {
         $categories = Category::all();
-
-        return view('createNews', compact('categories'));
+        $institutes = Institute::all();
+        return view('createNews', compact('categories', 'institutes'));
     }
 
     public function store(StoreNews $request)
@@ -38,8 +40,10 @@ class NewsController extends Controller
         $gallery = new Gallery();
         $news->user_id = auth()->user()->id;
         $news->category_id = $data['category'];
+        $news->institute_id = $data['institute'];
         $news->title = $data['title'];
         $news->content = $data['content'];
+
         $news->slug = createSlug($data['title'], $news->id, 'news');
 
         if (!$news->save()) {

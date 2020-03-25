@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 session_start();
 
 use App\Http\Requests\StoreRegister;
+use App\Http\Requests\StoreUser;
 use App\News;
 use App\User;
 use Illuminate\Contracts\Session\Session;
@@ -19,7 +20,7 @@ class UserController extends Controller
         return view('registro');
     }
 
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
         $data = $request->all();
         $user = new User();
@@ -54,7 +55,7 @@ class UserController extends Controller
         return view("userEdit", compact('user'));
     }
 
-    public function update(Request $request, $id)
+    public function update(StoreUser $request, $id)
     {
         $data = $request->all();
         $user = User::findOrFail($id);

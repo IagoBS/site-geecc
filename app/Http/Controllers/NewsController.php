@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Auth;
 
 class NewsController extends Controller
 {
-    
+
     public function index()
     {
-        $news = News::with(['user', 'gallery', 'category'])->get();
+        $news = News::with(['user', 'gallery', 'category'])->latest()->paginate(6);
 
         return view('home', compact('news'));
     }

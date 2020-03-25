@@ -8,14 +8,21 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-
+    <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <style>
+        .darkens li {
+            color: black
+        }
+
         main {
             min-height: calc(100vh - 100px - 180px);
         }
+        .colorindo li > a {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #e0f7fa ;
+}
     </style>
-     <script src="https://cdn.tiny.cloud/1/i09y6d6nbjev9kxrpsptvp6293geaa523le8lzra4hsqqs1n/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-     <script>tinymce.init({selector:'textarea'});</script>
+
     <title>@yield('title')</title>
 </head>
 
@@ -47,7 +54,11 @@
                         </a>
                     </li>
                     <li>
-                    <a href="">Perfil</a>
+
+                    <a href="{{route('usuario.show', auth()->user()->id)}}">Perfil</a>
+                    </li>
+                    <li>
+                    <a href="{{route('login.logout')}}">Logout</a>
                     </li>
                     @endauth
                 </ul>
@@ -74,22 +85,12 @@
             <div class="row">
                 <div class="col xl3 l3 m6 s6">
                     <p><strong>Mapa do Site</strong></p>
-                    <ul>
-                        <li><a href="https://www.clubeespirita.com.br/">Home</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/funcionamento">Como
-                                    Funciona</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/planos">Planos</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/duvidas">Dúvidas
-                                    Frequentes</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/vantagens">Vantagens
-                                    do Assinante</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/promocoes">Promoções</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/institucional">O
-                                    Clube do Livro</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/projetos">Projetos
-                                    Sociais</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/contato">Entre
-                                    em Contato</a></li>
+                    <ul class="colorindo">
+                        <li ><a href="https://www.clubeespirita.com.br/" >Home</a></li>
+                        <li><a href="https://www.clubeespirita.com.br/funcionamento">Quem Somos</a></li>
+                        <li><a href="">Contato</a></li>
+
+
 
                     </ul>
                 </div>
@@ -134,17 +135,7 @@
                 coverTrigger: false
             });
         });
-  $('#textarea1').val('New Text');
-  M.textareaAutoResize($('#textarea1'));
-  ;
-  tinymce.init({
-      selector: 'textarea',
-      plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen powerpaste table advtable tinycomments tinymcespellchecker',
-      toolbar: 'a11ycheck addcomment showcomments casechange checklist code formatpainter pageembed permanentpen table',
-      toolbar_mode: 'floating',
-      tinycomments_mode: 'embedded',
-      tinycomments_author: 'Author name',
-    });
+        CKEDITOR.replace( 'message' );
     </script>
 
 </body>

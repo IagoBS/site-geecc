@@ -27,6 +27,7 @@ class StoreNews extends FormRequest
             'title' => 'required|min:1|max:50',
             'content' => 'required|min:1',
             'about' => 'min:1',
+            'image' => 'image',
         ];
     }
     public function messages()
@@ -38,7 +39,8 @@ class StoreNews extends FormRequest
             'content.max' => 'Título não pode ter mais que 50 caracteres',
             'content.required' => 'Texto na notícia é obrigatório',
             'content.min' => 'Texto da notícia deve ter pleo menos 1 caractere',
-            'about.min' => 'Sobre você teve ter pelo menos 1 caractere'
+            'about.min' => 'Sobre você teve ter pelo menos 1 caractere',
+            'image' => 'erro o fazer upload de imagem'
         ];
     }
 }

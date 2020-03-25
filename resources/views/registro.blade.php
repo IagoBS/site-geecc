@@ -4,6 +4,16 @@
 <div class="col s12 m8 l12">
 <form class="{{route('usuario.store')}}" method="POST" enctype="multipart/form-data" id="form">
     @csrf
+    @csrf
+    @if ($errors->any())
+    <div class="card-content red-text center">
+        <ul>
+        @foreach ($errors->all() as $error )
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
         <div class="row">
             <div class="input-field col s12">
                 <h5 class="ml-4 center">Registrar usuário</h5>

@@ -28,6 +28,7 @@
 
 <body>
     <div class="navbar">
+
         <nav class="blue darken-1">
             <div class="nav-wrapper container">
                 <a href="" class="brand-logo left"><img src="{{asset('imagens/geec.png')}}" alt=""> </a>
@@ -64,11 +65,14 @@
                 </ul>
 
                 <ul id="dropdown-menu" class="dropdown-content">
+                    <li class="">
+
+                    </li>
 
                 </ul>
 
                 <ul id="institutos" class="dropdown-content">
-
+                    <li></li>
                 </ul>
             </div>
         </nav>

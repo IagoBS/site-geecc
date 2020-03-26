@@ -15,6 +15,11 @@ use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
+    public function index() {
+        $users = User::all();
+        return $users;
+    
+    }
     public function create()
     {
         return view('registro');

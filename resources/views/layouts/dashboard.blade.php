@@ -561,6 +561,32 @@
                 </div>
             </li>
 
+    <li class="bold">
+                <a class="collapsible-header waves-effect waves-cyan" href="javascript:void(0)" tabindex="0">
+                    <i class="material-icons">network_wifi</i>
+                    <span class="menu-title" data-i18n="Pages">Redes Sociais</span>
+                </a>
+                <div class="collapsible-body">
+                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+
+
+
+                        <li class="">
+                            <a href="{{url('/categoria/create')}}" class="">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span data-i18n="Account Settings">Criar rede social</span>
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="{{url('/categorias/lista')}}" class="">
+                                <i class="material-icons">radio_button_unchecked</i>
+                                <span data-i18n="Page Blank">Listar rede-sociais</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
 
 
 

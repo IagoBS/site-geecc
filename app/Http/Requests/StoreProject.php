@@ -27,7 +27,8 @@ class StoreProject extends FormRequest
             'name' => 'required',
             'about' => 'required',
             'logo' => 'required',
-            'descripition' => 'required'
+            'descripition' => 'required',
+            'institute' => 'required'
         ];
     }
     public function messages()
@@ -36,7 +37,8 @@ class StoreProject extends FormRequest
             'name.required' => 'O nome é obrigatório',
             'about' => 'A descrição do projeto é obrigatório',
             'logo' => 'O logo do projeto é obrigatório',
-            'descripition' => 'A descrição do projeto é obrigatório'
+            'descripition' => 'A descrição do projeto é obrigatório',
+            'institute.required' => 'É necessário que um projeto tenho um instituto'
         ];
     }
 }

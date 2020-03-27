@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="shortcut icon" href="{{asset('imagens/geec.png')}}" type="image/x-icon">
     <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <style>
         .darkens li {
@@ -48,6 +49,11 @@
                                 Institutos <i class="material-icons right">arrow_drop_down</i>
                             </a>
                     </li>
+                    <li>
+                        <a href="" class="dropdown-trigger" data-target="projetos">
+                            Projetos  <i class="material-icons right">arrow_drop_down</i>
+                        </a>
+                    </li>
                     @auth
                     <li>
                         <a href="{{url('/dashboard')}}" class="nav-itens">
@@ -65,14 +71,27 @@
                 </ul>
 
                 <ul id="dropdown-menu" class="dropdown-content">
+                    @foreach($users_templetes as $user)
                     <li class="">
-
+                        <a href="">{{$user->name}}</a>
                     </li>
+                    @endforeach
 
                 </ul>
 
                 <ul id="institutos" class="dropdown-content">
-                    <li></li>
+                    @foreach($institutes_templetes as $instituto)
+                    <li>
+                        <a href="">{{$instituto->name}}</a>
+                    </li>
+                    @endforeach
+                </ul>
+                <ul id="projetos" class="dropdown-content">
+                    @foreach($projects_templetes as $projecto)
+                    <li>
+                        <a href="">{{$projecto->name}}</a>
+                    </li>
+                    @endforeach
                 </ul>
             </div>
         </nav>

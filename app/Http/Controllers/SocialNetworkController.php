@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class SocialNetworkController extends Controller
 {
 
-  
+
 
     public function create()
     {
@@ -22,11 +22,12 @@ class SocialNetworkController extends Controller
         $socialNetwork = new SocialNetwork();
         $socialNetwork->name = $data['name'];
         $socialNetwork->url = $data['url'];
-        $socialNetwork->incone = store_file($request, 'icone', 'logo');
-        if($socialNetwork->save()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao criar rede social');
+        $socialNetwork->icone = store_file($request, 'icone', 'logo');
+
+        if(!$socialNetwork->save()) {
+            return redirect()->back()->withInput()->withErrors('Erro ao adionar rede-social');
         }
-        return redirect()->route('rede-social.index');
+        return redirect()->route('list.social_network');
     }
 
 
@@ -48,17 +49,14 @@ class SocialNetworkController extends Controller
         if(!$socialNetwork->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao alterar rede social');
         }
-        return redirect()->route('rede-social.update');
+        return redirect()->route('list.social_network');
     }
 
     public function destroy($id)
     {
         $socialNetwork = SocialNetwork::findOrFail($id);
-
-        if(!$socialNetwork->delete()) {
-            return redirect()->back()->withInput()->withErrors('Erro ao deletar rede social');
-        }
-        return redirect()->route('rede-social.destroy');
+        $socialNetwork->delete();
+        return redirect()->route('list.social_network');
     }
 
 }

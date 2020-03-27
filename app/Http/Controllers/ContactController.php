@@ -34,6 +34,7 @@ class ContactController extends Controller
         Mail::send('email.contactMail', ['send' => $sendEmail], function ($m) use ($sendEmail) {
             $m->from('web@geec.org.br', 'Geec');
             $m->to($sendEmail->email, $sendEmail->name)->subject('Contato GEEC - Grupo de Educação, Ética e Cidadania');
+            $m->cc('web@geec.org.br');
         });
 
         return redirect()->route('contato.index');

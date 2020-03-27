@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index() {
         $users = User::all();
         return $users;
-    
+
     }
     public function create()
     {
@@ -39,7 +39,7 @@ class UserController extends Controller
         if (!$user->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao registrar usuário');
         }
-        return redirect()->route('login');
+        return redirect()->route('list.user');
     }
     public function show($id)
     {
@@ -60,7 +60,7 @@ class UserController extends Controller
         return view("userEdit", compact('user'));
     }
 
-    public function update(StoreUser $request, $id)
+    public function update(Request $request, $id)
     {
         $data = $request->all();
         $user = User::findOrFail($id);
@@ -69,7 +69,7 @@ class UserController extends Controller
         $user->email = $data['email'];
         $user->about = $data['about'];
         $user->type = $data['type'];
-        $user->photo = store_file($request, 'photo', 'image');
+
         if (!$user->save()) {
             return redirect()->back()->withInput()->withErrors('Erro ao editar usuário');
         }

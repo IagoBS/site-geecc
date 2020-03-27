@@ -2,6 +2,16 @@
 @section('title', 'Editar usuário')
 @section('dashboard')
 <div class="col s12 m8 l12">
+    @if ($errors->any())
+        <div class="card-content red-text center">
+            <ul>
+            @foreach ($errors->all() as $error )
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
     <form action="{{route('usuario.update', $user->id)}}" id="form" method="POST">
         @csrf
         @method('put')
@@ -46,11 +56,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input type="file" name="photo" id="photo">
-                </div>
-            </div>
+            
         </div>
 </div>
 </form>

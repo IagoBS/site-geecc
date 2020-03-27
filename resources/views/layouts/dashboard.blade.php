@@ -9,13 +9,14 @@
     <meta name="csrf-token" content="Qrg0QCN2CXrUbdipEKAOELkLWd9w2aQXgYRXMJUX">
 
     <title>@yield('title')</title>
+    <link rel="shortcut icon" href="{{asset('imagens/geec.png')}}" type="image/x-icon">
     <link rel="apple-touch-icon"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/favicon/apple-touch-icon-152x152.png">
 
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/vendors.min.css">
-    
+
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/vendors/animate-css/animate.css">
     <link rel="stylesheet" type="text/css"
@@ -37,6 +38,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/css/custom/custom.css">
 
+        <script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
     <style type="text/css">
 
 
@@ -572,14 +574,14 @@
 
 
                         <li class="">
-                            <a href="{{url('/categoria/create')}}" class="">
+                            <a href="{{url('/rede-social/create')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Account Settings">Criar rede social</span>
                             </a>
                         </li>
 
                         <li class="">
-                            <a href="{{url('/categorias/lista')}}" class="">
+                            <a href="{{url('/social')}}" class="">
                                 <i class="material-icons">radio_button_unchecked</i>
                                 <span data-i18n="Page Blank">Listar rede-sociais</span>
                             </a>
@@ -679,6 +681,26 @@
     <div class="drag-target right-aligned"></div>
     <div class="sidenav-overlay"></div>
     <div class="drag-target right-aligned"></div>
+    <script>
+        CKEDITOR.plugins.addExternal( 'abbr', '/myplugins/abbr/', 'plugin.js' );
+
+        CKEDITOR.replace( 'content', {
+            on: {
+                instanceReady: function( ev ) {
+                    // Output paragraphs as <p>Text</p>.
+                    this.dataProcessor.writer.setRules( 'p', {
+                        indent: false,
+                        breakBeforeOpen: true,
+                        breakAfterOpen: false,
+                        breakBeforeClose: false,
+                        breakAfterClose: true
+                    });
+                }
+            }
+        } );
+        CKEDITOR.replace('descripition');
+        CKEDITOR.replace('about');
+    </script>
 </body>
 
 </html>

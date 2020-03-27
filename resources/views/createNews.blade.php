@@ -41,8 +41,7 @@
         <div class="row margin">
             <div class="input-field col s12">
                 <i class="material-icons prefix pt-2">wrap_text</i>
-                <textarea name="content" id="cotent" cols="120" class="materialize-textarea" rows="100"
-                    id="textarea1"></textarea>
+                <textarea name="content" id="cotent" cols="120" class="materialize-textarea bold" rows="100" id="textarea1"> </textarea>
             </div>
         </div>
         <div class="row margin">

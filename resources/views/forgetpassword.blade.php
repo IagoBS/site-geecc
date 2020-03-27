@@ -8,8 +8,18 @@
       </div>
     @endisset
     <h1 class="center">Recuperar senha</h1>
-    
+    @if ($errors->any())
+    <div class="card-content red-text center">
+        <ul>
+        @foreach ($errors->all() as $error )
+            <li>{{$error}}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
+
     <form action="{{route('forget.store')}}" method="post" id="form">
+
         @csrf
         <div class="col s12 m6 l4 z-depth-4 card-panel border-radius-6 login-card bg-opacity-8">
             <div class="row margin">

@@ -3,7 +3,15 @@
 @section('content')
 
     <div class="container">
-
+        @if ($errors->any())
+        <div class="card-content red-text center">
+            <ul>
+            @foreach ($errors->all() as $error )
+                <li>{{$error}}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
         <form action="{{route('forget.update')}}" method="post" id="form">
             @csrf
             @method('put')

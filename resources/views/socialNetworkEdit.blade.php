@@ -1,9 +1,12 @@
 @extends('layouts.dashboard')
+@section('title', 'Rede social')
+
 @section('title', 'Criar rede social')
 @section('dashboard')
 <div class="container">
-    <form action="{{route('rede-social.store')}}" method="post" id="form" enctype="multipart/form-data">
+    <form action="{{route('rede-social.update', $socialNetwork->id)}}" method="post" id="form" enctype="multipart/form-data">
     @csrf
+    @method('put')
     @if ($errors->any())
     <div class="alert alert-secondary text-center">
         <ul>
@@ -13,16 +16,16 @@
         </ul>
     </div>
     @endif
-    <h1 class="center">Adicionar rede social</h1>
+    <h1 class="center">Editar rede social</h1>
     <div class="row margin">
         <div class="input-field col s12">
-            <input type="text" name="name" id="name">
+            <input type="text" name="name" id="name" value="{{$socialNetwork->name}}">
             <label for="name">Nome da rede social</label>
         </div>
     </div>
     <div class="row margin">
         <div class="input-field col s12">
-            <input type="text" name="url" id="url">
+            <input type="text" name="url" id="url" value="{{ $socialNetwork->url }}">
             <label for="url">URL da rede social</label>
         </div>
     </div>
@@ -35,3 +38,4 @@
     <button type="submit" form="form" class="btn blue">Adicionar rede Social</button>
 </div>
 @endsection
+

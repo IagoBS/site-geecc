@@ -8,21 +8,21 @@
 <p>{{$quemSomos->about}}</p>
     <div class="row">
         <div class="col s12 l4">
-            <img class="promo" src="images/metaphor.png">
+            <img class="promo" src="{{asset('imagens/missao.png')}}" height="200px" width="300px">
             <h4 class="center">Missão</h4>
         <p>{{$quemSomos->mission}}</p>
             <br>
         </div>
 
         <div class="col s12 l4">
-            <img class="promo" src="images/bold.png">
+            <img class="promo" src="{{asset('imagens/valoreds.jpg')}}" height="200px" width="300px">
             <h4 class="center">Valores</h4>
         <p>{{$quemSomos->values}}</p>
             <br>
         </div>
 
         <div class="col s12 l4">
-            <img class="promo" src="images/motion.png">
+            <img class="promo" src="{{asset('imagens/visao.jpeg')}}" height="200px" width="300px">
             <h4 class="center">Visão</h4>
         <p>{{$quemSomos->vision}}</p>
         </div>

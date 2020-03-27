@@ -19,7 +19,6 @@ use App\Mail\SendMailContact;
 
 Route::group(['middleware' => ['auth', 'user.admin']], function () {
 
-    Route::get('/usuario/{id}', 'UserController@show')->name('usuario.show');
     Route::get('/registro', 'UserController@create')->name('usuario.create');
     Route::post('/registro', 'UserController@store')->name('usuario.store');
     Route::get('/usuario/{id}/edit', 'UserController@edit')->name('usuario.edit');
@@ -38,6 +37,7 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::get('projetos/lista', 'ListController@projets')->name('list.project');
     Route::get('usuarios/lista', 'ListController@user')->name('list.user');
     Route::get('categorias/lista', 'ListController@category')->name('list.category');
+    Route::get('social', 'ListController@socialNetwork')->name('list.social_network');
     Route::get('categoria/create', 'CategoryController@create')->name('category.create');
     Route::post('/categoria', 'CategoryController@store')->name('category.store');
     Route::get('/categoria/{id}/edit', 'CategoryController@edit')->name('category.edit');
@@ -45,28 +45,29 @@ Route::group(['middleware' => ['auth', 'user.admin']], function () {
     Route::delete('/categoria/{id}', 'CategoryController@destroy')->name('category.destroy');
 
 
-    Route::get('institutos/create', 'InstituteController@create')->name('institutos.create');
-Route::post('institutos', 'InstituteController@store')->name('institutos.store');
-Route::get('institutos/{instituto}/edit', 'InstituteController@edit')->name('institutos.edit');
-Route::put('institutos/{instituto}', 'InstituteController@update')->name('institutos.update');
-Route::delete('institutos/{instituto}', 'InstituteController@destroy')->name('institutos.destroy');
+    Route::get('/institutos/create', 'InstituteController@create')->name('institutos.create');
+    Route::post('/institutos', 'InstituteController@store')->name('institutos.store');
+    Route::get('/institutos/{instituto}/edit', 'InstituteController@edit')->name('institutos.edit');
+    Route::put('/institutos/{instituto}', 'InstituteController@update')->name('institutos.update');
+    Route::delete('/institutos/{instituto}', 'InstituteController@destroy')->name('institutos.destroy');
 
-Route::get('projetos/create', 'ProjectsController@create')->name('projetos.create');
-Route::post('projetos', 'ProjectsController@store')->name('projetos.store');
-Route::get('projetos/{projeto}/edit', 'ProjectsController@edit')->name('projetos.edit');
-Route::put('projetos/{projeto}', 'ProjectsController@update')->name('projetos.update');
-Route::delete('projetos/{projetos}', 'ProjectsController@destroy')->name('projetos.destroy');
+    Route::get('/projetos/create', 'ProjectsController@create')->name('projetos.create');
+    Route::post('/projetos', 'ProjectsController@store')->name('projetos.store');
+    Route::get('/projetos/{projeto}/edit', 'ProjectsController@edit')->name('projetos.edit');
+    Route::put('/projetos/{projeto}', 'ProjectsController@update')->name('projetos.update');
+    Route::delete('/projetos/{projetos}', 'ProjectsController@destroy')->name('projetos.destroy');
 
-Route::get('institucional/create', 'QuemSomosController@create')->name('institucional.create');
-Route::post('institucional', 'QuemSomosController@store')->name('institucional.store');
-Route::put('institucional/{institucional}', 'QuemSomosController@update')->name('institucional.update');
-Route::delete('institucional/{institucional}', 'QuemSomosController@destroy')->name('institucional.destroy');
-Route::get('institucional/{institucional}/edit', 'QuemSomosController@edit')->name('institucional.edit');
+    Route::get('/institucional/create', 'QuemSomosController@create')->name('institucional.create');
+    Route::post('/institucional', 'QuemSomosController@store')->name('institucional.store');
+    Route::put('/institucional/{institucional}', 'QuemSomosController@update')->name('institucional.update');
+    Route::delete('/institucional/{institucional}', 'QuemSomosController@destroy')->name('institucional.destroy');
+    Route::get('/institucional/{institucional}/edit', 'QuemSomosController@edit')->name('institucional.edit');
 
-Route::get('rede-social/create', 'SocialNetworkController@create')->name('rede-social.create');
-Route::post('rede-social', 'SocialNetworkController@store')->name('rede-social.store');
-Route::get('rede-social/{rede_social}/edit', 'SocialNetworkController@edit')->name('rede-social.edit');
-Route::put('rede-social/{rede_social}', 'SocialNetworkController@update')->name('rede-social.update');
+    Route::get('/rede-social/create', 'SocialNetworkController@create')->name('rede-social.create');
+    Route::post('/rede-social', 'SocialNetworkController@store')->name('rede-social.store');
+    Route::get('/rede-social/{rede_social}/edit', 'SocialNetworkController@edit')->name('rede-social.edit');
+    Route::put('/rede-social/{rede_social}', 'SocialNetworkController@update')->name('rede-social.update');
+    Route::delete('/rede-social/{id}', 'SocialNetworkController@destroy')->name('rede_social.destroy');
 
 
 });
@@ -82,6 +83,7 @@ Route::post('/store', 'LoginController@store')->name('login.store');
 Route::get('institutos', 'InstituteController@index')->name('institutos.index');
 Route::get('institutos/{instituto}', 'InstituteController@show')->name('institutos.show');
 
+Route::get('/usuario/{id}', 'UserController@show')->name('usuario.show');
 
 Route::get('projetos', 'ProjectsController@index')->name('projetos.index');
 Route::get('projetos/{projeto}', 'ProjectsController@show')->name('projetos.show');

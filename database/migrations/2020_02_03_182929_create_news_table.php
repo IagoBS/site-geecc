@@ -16,14 +16,14 @@ class CreateNewsTable extends Migration
         Schema::create('news', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('user_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned()->onDelete('cascade');;
             $table->foreign('user_id')->references('id')->on('users');
 
-            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned()->onDelete('cascade');;
             $table->foreign('category_id')->references('id')->on('categories');
 
 
-            $table->bigInteger('institute_id')->unsigned()->nullable();
+            $table->bigInteger('institute_id')->unsigned()->nullable()->onDelete('cascade');;
             $table->foreign('institute_id')->references('id')->on('institutes');
 
             $table->string('title');

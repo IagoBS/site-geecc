@@ -28,6 +28,7 @@ class StoreNews extends FormRequest
             'content' => 'required|min:1',
             'about' => 'min:1',
             'image' => 'image',
+            'institute' => 'required'
         ];
     }
     public function messages()
@@ -40,7 +41,8 @@ class StoreNews extends FormRequest
             'content.required' => 'Texto na notícia é obrigatório',
             'content.min' => 'Texto da notícia deve ter pleo menos 1 caractere',
             'about.min' => 'Sobre você teve ter pelo menos 1 caractere',
-            'image' => 'erro o fazer upload de imagem'
+            'image' => 'erro o fazer upload de imagem',
+            'institute.required' => 'É necessário que notícia tenha um instituto'
         ];
     }
 }

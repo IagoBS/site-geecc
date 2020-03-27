@@ -82,7 +82,7 @@
                         <div class="row">
 
                             <div class="input-field col s6 m6 l6">
-                                <p class=""><a href="blue darken-1">Esqueceu a senha?</a>
+                                <p class=""><a href="{{url('/recuperar')}}">Esqueceu a senha?</a>
                                 </p>
                             </div>
                         </div>

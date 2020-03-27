@@ -14,7 +14,7 @@
                     @if(count($noticia->gallery) > 0)
 
                 <img class="responsive-img border-radius-8 z-depth-4 image-n-margin center"
-                src="{{url('storage/' . $noticia->gallery[0]->photo)}}" alt="images" height="50px" width="500px">
+                src="{{url('storage/' . $noticia->gallery[0]->photo)}}" alt="images" height="100px" width="400px">
 
                     @endif
                 </a>

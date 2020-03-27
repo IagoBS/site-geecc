@@ -8,6 +8,7 @@ use App\Gallery;
 use App\Institute;
 use App\News;
 use App\Project;
+use App\SocialNetwork;
 use App\User;
 
 class ListController extends Controller
@@ -31,5 +32,9 @@ class ListController extends Controller
     public function category() {
         $categories = Category::all();
         return view('listaCategoria', compact('categories'));
+    }
+    public function socialNetwork() {
+        $socialNetworks = SocialNetwork::all();
+        return view('listSocialNetwork', compact('socialNetworks'));
     }
 }

@@ -17,26 +17,24 @@
         </div>
     </div>
 
-    @foreach($news as $noticia)
-    <div class="row mt-2">
-        <div class="col s12 m6 l4 card-width">
-            <div class="card-panel border-radius-6 mt-10 card-animation-1">
+    <div class="row">
+        @foreach($news as $noticia)
+        <div class="col s12 m6 l6">
+            <div class="card">
+              <div class="card-image">
+              <img src="{{url('storage/' . $noticia->gallery[0]->photo)}}" alt="sample"> <span class="card-title center black">{{$noticia->title}}</span>
+              </div>
+              <div class="card-content">
+                <p>
 
-                <a href="{{url('/news' . "/" . $noticia->slug)}}">
-                    @if(count($noticia->gallery) > 0)
-                    <img class="responsive-img border-radius-8 z-depth-4 image-n-margin"
-                        src="{{url('storage/' . $noticia->gallery[0]->photo)}}" alt="images">
-                    @endif
-                </a>
-                <h6><a href="#" class="mt-5">{{$noticia->title}}</a></h6>
-
-                <p class="">Criado em: {{date('d/m/Y H:i', strtotime($noticia->created_at))}}</p>
-                <p><span>Categoria: {{$noticia->category->name}}</span></p>
-                <p><span>Autor: {{$noticia->user->name}}</span></p>
+                </p>
+              </div>
+              <div class="card-action">
+              <a href="{{route('news.show', $noticia->slug)}}" class="waves-effect waves-light btn gradient-45deg-red-pink">[...] Ver notícia</a>
+              </div>
             </div>
-        </div>
+          </div>
         @endforeach
     </div>
-
 </div>
 @endsection

@@ -77,7 +77,7 @@
       <div class="col s12">
         <h6>Sobre o projeto</h6>
         <img class="responsive-img card-border z-depth-2 mt-2" src="https://www.pixinvent.com/materialize-material-design-admin-template/laravel/demo-2/images/gallery/post-3.png" alt="">
-        <p><a href="#">Meeting with clients</a></p>
+        
         <p>{!! $projects->about !!}</p>
       </div>
     </div>
@@ -87,7 +87,7 @@
 
 
 
-    
+
   </div>
 </div>
 </div>

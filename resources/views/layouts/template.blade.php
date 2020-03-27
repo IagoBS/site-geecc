@@ -73,7 +73,7 @@
                 <ul id="dropdown-menu" class="dropdown-content">
                     @foreach($users_templetes as $user)
                     <li class="">
-                        <a href="">{{$user->name}}</a>
+                        <a href="{{ route('usuario.show', $user->id) }}">{{$user->name}}</a>
                     </li>
                     @endforeach
 
@@ -82,14 +82,14 @@
                 <ul id="institutos" class="dropdown-content">
                     @foreach($institutes_templetes as $instituto)
                     <li>
-                        <a href="">{{$instituto->name}}</a>
+                        <a href="{{ route('institutos.show', $instituto->id) }}">{{$instituto->name}}</a>
                     </li>
                     @endforeach
                 </ul>
                 <ul id="projetos" class="dropdown-content">
                     @foreach($projects_templetes as $projecto)
                     <li>
-                        <a href="">{{$projecto->name}}</a>
+                        <a href="{{ route('projetos.show', $projecto->slug) }}">{{$projecto->name}}</a>
                     </li>
                     @endforeach
                 </ul>
@@ -121,12 +121,9 @@
                 <div class="col xl4 l4 m6 s6">
                     <p><strong></strong></p>
                     <ul>
-                        <li><a href="https://www.clubeespirita.com.br/termos">Termos
-                                    de Serviço</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/termos/politica">Política
-                                    de Privacidade e Segurança</a></li>
-                        <li><a href="https://www.clubeespirita.com.br/termos/promocoes">Regulamento
-                                    das Promoções</a></li>
+                       @foreach ($sociais as $rede)
+                       <a href="{{$rede->url}}" class="mt-3"><img src="{{url('storage/' . $rede->icone)}}" height="50px" width="50px"  alt="{{$rede->name}}"></a>&nbsp
+                       @endforeach
                     </ul>
 
                 </div>

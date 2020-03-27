@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Institute;
 use App\Project;
+use App\SocialNetwork;
 use App\User;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
@@ -31,5 +32,6 @@ class AppServiceProvider extends ServiceProvider
         View::share('users_templetes', User::all());
         View::share('institutes_templetes', Institute::all());
         View::share('projects_templetes', Project::all());
+        View::share('sociais', SocialNetwork::all());
     }
 }
